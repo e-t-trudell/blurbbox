@@ -1,0 +1,13 @@
+Welcome to Java
+
+Firstly to run your Java app we want to create an empty file with the 
+file and class name matching.
+
+then with a simple message like we have below with hello world, we will
+compile our code with the command 
+"javac NameOfFile.Java".
+
+To actually run the application we must use the command 
+"java NameOfFile"
+
+EVERY TIME you edit a file, YOU MUST re-compile it!!

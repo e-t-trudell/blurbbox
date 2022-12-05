@@ -39,7 +39,7 @@ class BankAccount {
         else {
             if(amount > this.savingsBalance) {
                 System.out.println("Insufficient Funds");
-                return
+                return;
             }
             this.savingsBalance -= amount;
         }

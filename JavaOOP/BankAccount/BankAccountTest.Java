@@ -6,7 +6,7 @@ class BankAccountTest {
         sadieBankAccount.deposit(75, "savings");
         sadieBankAccount.withdraw(100, "checking");
         sadieBankAccount.withdraw(800, "checking");
-        sadieBankAccount.withdraw(75, "savings");
+        sadieBankAccount.withdraw(76, "savings");
 
         System.out.println(sadieBankAccount.getCheckingBalance());
         System.out.println(sadieBankAccount.getSavingsBalance());

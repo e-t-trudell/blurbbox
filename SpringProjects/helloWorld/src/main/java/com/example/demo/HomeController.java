@@ -6,9 +6,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/home")
+@RequestMapping("")
 public class HomeController {
 	@RequestMapping("/")
+	public String begin() {
+		return "demo.jsp";
+	}
+	@RequestMapping("/index")
 	public String index(@RequestParam(value="q", required=false) String searchQuery) {
 		if(searchQuery == null) {
 			return "You searched for: Nothing";
@@ -20,7 +24,7 @@ public class HomeController {
 	
 	@RequestMapping("/goodbye")
 	public String world() {
-		return "Goodbye!";
+		return "<h1 style='color: red;'>Hello World </h1>";
 	}
 	
 	@RequestMapping("/m/{track}/{module}/{lesson}")

@@ -5,15 +5,18 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
+		
+		<!-- so at first this was 3.0.0, we changed it to support our data -->
+		
 		<version>2.7.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.codingdojo.helloworld</groupId>
-	<artifactId>helloWorld</artifactId>
+	<groupId>com.codingdojo.jstltags</groupId>
+	<artifactId>jstlTags</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>helloWorld</name>
-	<description>Demo project for Spring Boot</description>
+	<name>jstlTags</name>
+	<description>project to understand jstl</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -23,7 +26,9 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		
-		 <dependency>
+		<!-- We added in these two dependencies below -->
+		
+		<dependency>
                 <groupId>org.apache.tomcat.embed</groupId>
                 <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
@@ -31,6 +36,7 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>jstl</artifactId>
         </dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>

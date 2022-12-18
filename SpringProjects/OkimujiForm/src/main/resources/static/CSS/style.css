@@ -1,1 +1,20 @@
 @charset "ISO-8859-1";
+
+* {
+	margin: 5px;
+	padding: 5px;
+}
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+div {
+	display: flex;
+	justify-content: center;
+}
+
+.blue {
+	background-color: aqua;
+}

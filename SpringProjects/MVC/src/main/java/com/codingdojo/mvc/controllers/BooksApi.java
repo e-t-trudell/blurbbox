@@ -44,7 +44,7 @@ public class BooksApi {
 	     Book book = new Book( title, desc, lang, numOfPages); // turns out the code in the platform was a bit weird until I looked at
 	     // some other resources. Then it all clicked together
 	     book.setId(id);
-	     Book updateBook = bookService.updateBook(book);
+	     Book updateBook = bookService.updateBook(book); //why is this set up like this???
 	     return updateBook;
 	 }
 	

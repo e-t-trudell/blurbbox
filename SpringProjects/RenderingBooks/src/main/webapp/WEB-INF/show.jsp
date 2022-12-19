@@ -15,6 +15,9 @@
 <title>Books</title>
 </head>
 <body>
-
+	<h1><c:out value="${Book.title}"/></h1>
+	<h4>Description: <c:out value="${Book.description}"/></h4>
+	<h4>Language: <c:out value="${Book.language}"/></h4>
+	<h4>Number of Pages: <c:out value="${Book.numberOfPages}"/></h4>
 </body>
 </html>

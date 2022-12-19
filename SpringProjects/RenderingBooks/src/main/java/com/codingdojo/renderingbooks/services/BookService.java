@@ -1,14 +1,14 @@
-package com.codingdojo.mvc.services;
+package com.codingdojo.renderingbooks.services;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.codingdojo.mvc.models.Book;
-import com.codingdojo.mvc.repositories.BookRepository;
+import com.codingdojo.renderingbooks.models.Book;
+import com.codingdojo.renderingbooks.repositories.BookRepository;
 
-@Service 
+@Service
 public class BookService {
 	private final BookRepository bookRepository;
 	

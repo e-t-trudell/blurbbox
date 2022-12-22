@@ -19,5 +19,9 @@
 	<h4>Description: <c:out value="${book.description}"/></h4>
 	<h4>Language: <c:out value="${book.language}"/></h4>
 	<h4>Number of Pages: <c:out value="${book.numberOfPages}"/></h4>
+	<form action="/books/${book.id}" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
+</form>
 </body>
 </html>

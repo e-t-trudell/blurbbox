@@ -1,5 +1,6 @@
-package com.codingdojo.databinding.controllers;
+package com.codingdojo.savetravels.controllers;
 
+import java.awt.print.Book;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -16,19 +17,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.codingdojo.databinding.models.Book;
-import com.codingdojo.databinding.services.BookService;
+import com.codingdojo.savetravels.models.Expense;
+import com.codingdojo.services.ExpenseService;
 
 @Controller
-public class BookController {
+public class ExpenseController {
 	
 	@Autowired
-	BookService bookService;
+	ExpenseService expenseService;
 	
 	@GetMapping("/books")
 	public String index(Model model) {
-		List<Book> books = bookService.allBooks();
-		model.addAttribute("books", books);
+		List<Expense> expenses = expenseService.allExpenses();
+		model.addAttribute("expenses", expenses);
 		
 		return "allBooks.jsp";
 	}
@@ -90,7 +91,4 @@ public class BookController {
 //        bookService.deleteBook(id);
 //        return "redirect:/books";
 //    }
-	
 }
-	
-

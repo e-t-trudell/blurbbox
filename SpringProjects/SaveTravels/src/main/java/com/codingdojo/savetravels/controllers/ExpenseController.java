@@ -1,6 +1,5 @@
 package com.codingdojo.savetravels.controllers;
 
-import java.awt.print.Book;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -9,86 +8,91 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.codingdojo.savetravels.models.Expense;
-import com.codingdojo.services.ExpenseService;
+import com.codingdojo.savetravels.services.ExpenseService;
 
-@Controller
+@Controller 
 public class ExpenseController {
 	
 	@Autowired
-	ExpenseService expenseService;
+	private ExpenseService expenseService;
 	
-	@GetMapping("/books")
-	public String index(Model model) {
+	@GetMapping("/")
+	public String pre() {
+		return "redirect:/expenses";
+	}
+	
+	@GetMapping("/expenses")
+	public String index(Model model, @ModelAttribute("expense")Expense expense) {
 		List<Expense> expenses = expenseService.allExpenses();
 		model.addAttribute("expenses", expenses);
 		
-		return "allBooks.jsp";
+		return "expenses.jsp";
 	}
 	
-	@GetMapping("/books/new")
-	public String newBook(@ModelAttribute("book") Book book) {
-		return "new.jsp";
-	}
-	
+
 	
 	// creates one
-	@PostMapping("/books")
-	    public String create(@Valid @ModelAttribute("book") Book book, BindingResult result) {
+	@PostMapping("/expenses")
+	    public String create(@Valid @ModelAttribute("expense") Expense expense, BindingResult result, Model model) {
+		System.out.println("lolololololololol");
 	        if (result.hasErrors()) {
-	            return "new.jsp";
+	        	
+	        	System.out.println("an error is supposed to show");
+	            return "expenses.jsp";
 	        } else {
-	            bookService.createBook(book);
-	            return "redirect:/books";
+	        	System.out.println("the error is occuring before creation");
+	            expenseService.createExpense(expense);
+	            System.out.println("the error is occuring after creation");
+	            return "redirect:/expenses";
 	        }
     }
 	
 	// Displays one 
-	@GetMapping("/books/{id}")
-	public String showbook(@PathVariable("id") Long id, Model model) {
-		Book book = bookService.findBook(id);
-		model.addAttribute("book", book);
+	@GetMapping("/expenses/{id}")
+	public String show(@PathVariable("id") Long id, Model model) {
+		Expense expense = expenseService.findExpense(id);
+		model.addAttribute("expense", expense);
 		
-		return "oneBook.jsp";
+		return "one.jsp";
 	}
 	
 	// BELOW is marked for the editing and updating
-	@GetMapping("/books/{id}/edit")
+	@GetMapping("/expenses/{id}/edit")
     public String edit(@PathVariable("id") Long id, Model model) {
-        Book book = bookService.findBook(id);
-        model.addAttribute("book", book);
+        Expense expense = expenseService.findExpense(id);
+        model.addAttribute("expense", expense);
         return "edit.jsp";
     }
     
-    @PutMapping("/books/{id}")
-    public String update(@Valid @ModelAttribute("book") Book book, BindingResult result) {
+    @PutMapping("/expenses/{id}")
+    public String update(@PathVariable("id") Long id,@Valid @ModelAttribute("expense")Model model, Expense e, BindingResult result) {
         if (result.hasErrors()) {
+        	Expense expense = expenseService.findExpense(id);
+    		model.addAttribute("expense", expense);
             return "edit.jsp";
         } else {
-            bookService.updateBook(book);
-            return "redirect:/books";
+            expenseService.updateExpense(e);
+            return "redirect:/expenses";
         }
     }
     
-    // implementing Delete/Destroy function
-    @RequestMapping(value="/books/{id}", method=RequestMethod.DELETE)// is there a difference between RequestMapping and GetMapping???
-    public String destroy(@PathVariable("id") Long id) {
-        bookService.deleteBook(id);
-        return "redirect:/books";
-    }
     
     // Below is simply a shorthand for the same Delete functionality
-//    @DeleteMapping("/books/{id}")
-//    public String destroy(@PathVariable("id") Long id) {
-//        bookService.deleteBook(id);
-//        return "redirect:/books";
-//    }
+    @DeleteMapping("/expenses/{id}")
+    public String destroy(@PathVariable("id") Long id) {
+        expenseService.deleteExpense(id);
+        return "redirect:/expenses";
+    }
+    
+    
+    
+    
 }

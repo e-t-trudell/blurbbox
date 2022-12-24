@@ -1,4 +1,4 @@
-package com.codingdojo.services;
+package com.codingdojo.savetravels.services;
 
 import java.util.List;
 import java.util.Optional;

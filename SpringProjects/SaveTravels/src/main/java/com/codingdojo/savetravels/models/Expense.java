@@ -11,6 +11,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -25,20 +26,23 @@ public class Expense {
     private Long id;
 	
 	@NotNull
-    @Size(min = 5, max = 200, message="Title must be at least 5 characters")
+	@NotBlank( message="name required")
+    @Size
     private String name;
     
     @NotNull
-    @Size(min = 5, max = 200, message=" Description must be at least 5 characters")
+    @Size
+    @NotBlank( message="Message required")
     private String description;
     
     @NotNull
-    @Size(min = 3, max = 40, message="Must be at least 3 characters")
+    @Size
+    @NotBlank( message="Vendor required")
     private String vendor;
     
-    @NotNull(message="Must not be blank")
-    @Min(value=100, message="Must be at least 100 pages.")
-    private double amount;
+    @NotNull(message="Price required")
+    @Min(value=0, message="Must enter a valid amount.")
+    private Float amount;
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -50,7 +54,7 @@ public class Expense {
     }
     
     
-    public Expense( String name, String description, String vendor, double amount) {
+    public Expense( String name, String description, String vendor, Float amount) {
 		this.name = name;
 		this.description = description;
 		this.vendor = vendor;
@@ -98,12 +102,12 @@ public class Expense {
 	}
 
 
-	public double getAmount() {
+	public Float getAmount() {
 		return amount;
 	}
 
 
-	public void setAmount(double amount) {
+	public void setAmount(Float amount) {
 		this.amount = amount;
 	}
 

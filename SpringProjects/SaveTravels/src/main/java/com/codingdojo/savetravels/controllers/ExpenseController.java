@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
+
 import com.codingdojo.savetravels.models.Expense;
 import com.codingdojo.savetravels.services.ExpenseService;
 
@@ -38,6 +39,10 @@ public class ExpenseController {
 	}
 	
 
+//	@GetMapping("/expense")
+//	public String newExpense(@ModelAttribute("expense") Expense expense) {
+//		return "expenses.jsp";
+//	}
 	
 	// creates one
 	@PostMapping("/expenses")
@@ -65,18 +70,17 @@ public class ExpenseController {
 	}
 	
 	// BELOW is marked for the editing and updating
-	@GetMapping("/expenses/{id}/edit")
+	@GetMapping("/expenses/edit/{id}")
     public String edit(@PathVariable("id") Long id, Model model) {
         Expense expense = expenseService.findExpense(id);
         model.addAttribute("expense", expense);
         return "edit.jsp";
     }
     
-    @PutMapping("/expenses/{id}")
-    public String update(@PathVariable("id") Long id,@Valid @ModelAttribute("expense")Model model, Expense e, BindingResult result) {
+    @PutMapping("/update/{id}")
+    public String update(@PathVariable("id") Long id,@Valid @ModelAttribute("expense")Expense expense, BindingResult result, Expense e) {
         if (result.hasErrors()) {
-        	Expense expense = expenseService.findExpense(id);
-    		model.addAttribute("expense", expense);
+        	
             return "edit.jsp";
         } else {
             expenseService.updateExpense(e);
@@ -86,7 +90,7 @@ public class ExpenseController {
     
     
     // Below is simply a shorthand for the same Delete functionality
-    @DeleteMapping("/expenses/{id}")
+    @DeleteMapping("/destroy/{id}")
     public String destroy(@PathVariable("id") Long id) {
         expenseService.deleteExpense(id);
         return "redirect:/expenses";

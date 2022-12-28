@@ -15,7 +15,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 style="text-align: center;">Welcome User!</h1>
-	<h3 style="text-align: center;"><a href="/counter/">Back to counter</a></h3>
+<p>You have visited <a href="/"><c:out value="${page}"/></a> <c:out value="${count}"/> time(s).</p>
+<p><a href="/">Test another visit?</a></p>
+<p><a href="/reset-counter/">Reset counter</a></p>
 </body>
 </html>

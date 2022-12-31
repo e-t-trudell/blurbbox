@@ -1,4 +1,4 @@
-package com.codingdojo.savetravels.models;
+package com.codingdojo.languages.models;
 
 import java.util.Date;
 
@@ -10,17 +10,15 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-
-@Entity 
-@Table(name="expenses")
-public class Expense {
+@Entity
+@Table(name="languages")
+public class Language {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,17 +30,15 @@ public class Expense {
     
     @NotNull
     @Size
-    @NotBlank( message="Message required")
-    private String description;
+    @NotBlank( message="creator required")
+    private String creator;
     
     @NotNull
     @Size
-    @NotBlank( message="Vendor required")
-    private String vendor;
+    @NotBlank( message="Cannot be empty")
+    private String currentVersion;
     
-    @NotNull(message="Price required")
-    @Min(value=0, message="Must enter a valid amount.")
-    private Float amount;
+    
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -50,15 +46,14 @@ public class Expense {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
     
-    public Expense() {
+    public Language() {
     }
     
     
-    public Expense( String name, String description, String vendor, Float amount) {
+    public Language( String name, String creator, String currentVersion) {
 		this.name = name;
-		this.description = description;
-		this.vendor = vendor;
-		this.amount = amount;
+		this.creator = creator;
+		this.currentVersion = currentVersion;
 	}
 
 
@@ -82,33 +77,23 @@ public class Expense {
 	}
 
 
-	public String getDescription() {
-		return description;
+	public String getCreator() {
+		return creator;
 	}
 
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setCreator(String creator) {
+		this.creator = creator;
 	}
 
 
-	public String getVendor() {
-		return vendor;
+	public String getCurrentVersion() {
+		return currentVersion;
 	}
 
 
-	public void setVendor(String vendor) {
-		this.vendor = vendor;
-	}
-
-
-	public Float getAmount() {
-		return amount;
-	}
-
-
-	public void setAmount(Float amount) {
-		this.amount = amount;
+	public void setCurrentVersion(String currentVersion) {
+		this.currentVersion = currentVersion;
 	}
 
 
@@ -130,9 +115,7 @@ public class Expense {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-    
-
-
+	
 	@PrePersist
     protected void onCreate(){
         this.createdAt = new Date();
@@ -141,4 +124,5 @@ public class Expense {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
+    
 }

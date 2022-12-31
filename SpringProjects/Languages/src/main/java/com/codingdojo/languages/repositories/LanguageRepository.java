@@ -1,20 +1,19 @@
-package com.codingdojo.savetravels.repositories;
+package com.codingdojo.languages.repositories;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.codingdojo.savetravels.models.Expense;
+import com.codingdojo.languages.models.Language;
 
 
-
-@Repository 
-public interface ExpenseRepository extends CrudRepository<Expense, Long> {
-List<Expense> findAll();
-	
+@Repository
+public interface LanguageRepository extends CrudRepository<Language, Long>{
+	List<Language> findAll();
+	 
 	// this method finds expenses with descriptions containing the search string
-    List<Expense> findByDescriptionContaining(String search);
+    List<Language> findByCreatorContaining(String search);
     // this method counts how many titles contain a certain string
     Long countByNameContaining(String search);
     // this method deletes an expense that starts with a specific title

@@ -14,9 +14,9 @@
 <!-- For any Bootstrap that uses JS or jQuery-->
 <script src="/webjars/jquery/jquery.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>Languages</title>
 </head>
-<body>
+<body class="container">
 	<table class="table table-striped table bordered">
 		<thead>
 			<tr>
@@ -33,12 +33,14 @@
 					<td><c:out value="${language.creator}"></c:out></td>
 					<td><c:out value="${language.currentVersion}"></c:out></td>
 					<td>
-						<form action="/destroy/${language.id}" method="post">
-					    <input type="hidden" name="_method" value="delete">
-					    <input type="submit" value="Delete" class="btn btn-danger">
-					    </form>
+						<div class="side">
+							<form action="/destroy/${language.id}" method="post">
+						    <input type="hidden" name="_method" value="delete">
+						    <input type="submit" value="Delete" class="btn btn-danger">
+						    </form>
 					    
 						<a href="/languages/edit/${language.id}">edit</a>
+						</div>
 					</td>
 				</tr>
 			</c:forEach>

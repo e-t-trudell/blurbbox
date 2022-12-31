@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page isErrorPage="true" %>
@@ -18,10 +17,13 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <title>edit <c:out value="${language.name}"/></title>
 </head>
-<body>
-	<div >
-		<h2>Edit a language:</h2>
-		<p><a href="/languages">Go Back</a></p>
+<body class="container">
+	<div class="away">
+		<form action="/destroy/${language.id}" method="post">
+		    <input type="hidden" name="_method" value="delete">
+		    <input type="submit" value="Delete" class="btn btn-danger">
+	    </form>
+		<p><a href="/languages">Dashboard</a></p>
 	</div>
 	
 	<form:form action ="/update/${language.id}" method="post" modelAttribute="language" class="form">
@@ -41,8 +43,10 @@
 			<form:errors path="currentVersion" class="text-danger"/>
 			<form:input path="currentVersion" class="form-control"/>
 		</div>
-		
+		<div class="away">
 		<input type="submit" value="Submit"/>
+		</div>
+		
 	</form:form>
 </body>
 </html>

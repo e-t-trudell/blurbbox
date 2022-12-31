@@ -4,3 +4,14 @@
 	margin: 10px;
 	padding: 10px;
 }
+
+.away {
+	display: flex;
+	
+	justify-content: end;
+}
+
+.side {
+	display: flex;
+	flex-direction: row;
+}

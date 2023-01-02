@@ -46,7 +46,7 @@ public class LanguageController {
 	        if (result.hasErrors()) {
 	        	
 	        	System.out.println("an error is supposed to show");
-	            return "languages.jsp";
+	            return "index.jsp";
 	        } else {
 	        	System.out.println("the error is occuring before creation");
 	            languageService.createLanguage(language);
@@ -78,15 +78,18 @@ public class LanguageController {
 	        	
 	            return "edit.jsp";
 	        } else {
-	            languageService.updateLanguage(l);
+	            languageService.updateLanguage(language);
 	            return "redirect:/languages";
 	        }
 	    }
+	    
 	 // Below is simply a shorthand for the same Delete functionality
 	    @DeleteMapping("/destroy/{id}")
 	    public String destroy(@PathVariable("id") Long id) {
 	        languageService.deleteLanguage(id);
 	        return "redirect:/languages";
 	    }
-	
+
+	    
 }
+

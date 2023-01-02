@@ -49,6 +49,9 @@
 	
 	<h2>Add a Language:</h2>
 	<form:form action="/languages" method="post" modelAttribute="language" class="form">
+	<form:errors path="name" class="text-danger"/>
+	<form:errors path="creator" class="text-danger"/>
+	<form:errors path="currentVersion" class="text-danger"/>
 		<div class="form-group">
 			<form:label path="name">Name</form:label>
 			<form:input path="name" class="form-control"/>

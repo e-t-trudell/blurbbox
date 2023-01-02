@@ -25,11 +25,11 @@ public class Language {
 	
 	@NotNull
 	@NotBlank( message="name required")
-    @Size
+    @Size(min = 2, max = 20)
     private String name;
     
     @NotNull
-    @Size
+    @Size(min = 2, max = 20)
     @NotBlank( message="creator required")
     private String creator;
     

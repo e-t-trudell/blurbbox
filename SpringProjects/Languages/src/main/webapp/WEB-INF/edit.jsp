@@ -2,8 +2,8 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ page isErrorPage="true" %>
 <%@ taglib prefix = "form" uri="http://www.springframework.org/tags/form" %>
+<%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,9 +26,10 @@
 		<p><a href="/languages">Dashboard</a></p>
 	</div>
 	
-	<form:form action ="/update/${language.id}" method="post" modelAttribute="language" class="form">
+	<form:form action="/update/${language.id}" method="post" modelAttribute="language" class="form">
 		<input type="hidden" name="_method" value="put">
-		<div class="form-group">
+		
+		<div class="form-group"> 
 			<form:label path="name">Name</form:label>
 			<form:errors path="name" class="text-danger"/>
 			<form:input path="name" class="form-control"/>

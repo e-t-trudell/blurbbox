@@ -17,19 +17,32 @@
 <title>New Ninja</title>
 </head>
 <body>
-	<form:form method="post" modelAttribute="ninja" class="form">
+	<form:form action="/ninja/create" method="post" modelAttribute="ninja" class="form">
 		<div class="form-group">
 			<form:label path="dojo">Dojo:</form:label>
+			<form:errors path="dojo"/>
 			<form:select path="dojo">
 				<c:forEach var="dojo" items="${dojos}">
-					<option value="${team.id}">${teams}</option>
+					<option value="${dojo.id}">${dojo.name}</option>
 				</c:forEach>
 			</form:select>
 		</div>
 		<div class="form-group">
 			<form:label path="firstName">First Name:</form:label>
+			<form:errors path="firstName"/>
 			<form:input path="firstName" class="form-control"/>
 		</div>
+		<div class="form-group">
+			<form:label path="lastName">Last Name:</form:label>
+			<form:errors path="lastName"/>
+			<form:input path="lastName" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<form:label path="age">Age:</form:label>
+			<form:errors path="age"/>
+			<form:input path="age" class="form-control"/>
+		</div>
+		<button class="btn btn-primary">Create Ninja</button>
 	</form:form>
 </body>
 </html>

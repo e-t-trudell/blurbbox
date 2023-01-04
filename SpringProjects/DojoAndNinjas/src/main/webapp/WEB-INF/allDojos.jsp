@@ -15,7 +15,7 @@
 <title>Insert title here</title>
 </head>
 <body class="container">
-	<h1>Blank Location Ninjas</h1>
+	<h1><c:out value="${dojo.name}"/> Location Ninjas</h1>
 	<table class="table">
 		<thead>
 			<tr>
@@ -25,7 +25,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="eachNinja" items="${ninjas}">
+			<c:forEach var="eachNinja" items="${dojo.ninjas}">
 			<tr>
 				<td><c:out value="${eachNinja.firstName}"/></td>
 				<td><c:out value="${eachNinja.lastName}"/></td>

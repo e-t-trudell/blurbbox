@@ -3,6 +3,7 @@ package com.codingdojo.dojosandninjas.models;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,7 +25,9 @@ public class Dojo {
     @Column(updatable=false)
     private Date createdAt;
     private Date updatedAt;
-    @OneToMany(mappedBy="dojo", fetch = FetchType.LAZY)
+    
+    
+    @OneToMany(mappedBy="dojo", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Ninja> ninjas;
     
     public Dojo() {

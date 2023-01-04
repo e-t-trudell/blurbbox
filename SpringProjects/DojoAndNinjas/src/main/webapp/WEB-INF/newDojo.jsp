@@ -18,7 +18,7 @@
 </head>
 <body>
 	<h1>New Dojo</h1>
-	<form:form action ="/dojos/{id}" method="post" modelAttribute="dojo" class="form">
+	<form:form action ="/dojos/create" method="post" modelAttribute="dojo" class="form">
 		<div class="form-group">
 			<form:label path="name">Name</form:label>
 			<form:input path="name" class="form-control"/>

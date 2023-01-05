@@ -31,7 +31,7 @@ public class Ninja {
     private Dojo dojo;
     
     public Ninja() {
-        
+    	
     }
 
 	public Long getId() {

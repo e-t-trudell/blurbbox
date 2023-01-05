@@ -16,15 +16,17 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <title>New Ninja</title>
 </head>
-<body>
+<body class="container">
 	<form:form action="/ninja/create" method="post" modelAttribute="ninja" class="form">
 		<div class="form-group">
 			<form:label path="dojo">Dojo:</form:label>
 			<form:errors path="dojo"/>
 			<form:select path="dojo">
-				<c:forEach var="dojo" items="${dojos}">
-					<option value="${dojo.id}">${dojo.name}</option>
-				</c:forEach>
+				<c:forEach var="dojo" items="${allDojos}"> <!-- Im wondering if i have an error from my controller --> 
+					<form:option value="${dojo.id}">
+						<c:out value="${dojo.name}"/>
+					</form:option>
+				</c:forEach> 
 			</form:select>
 		</div>
 		<div class="form-group">

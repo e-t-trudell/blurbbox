@@ -16,7 +16,7 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <title>New Dojo</title>
 </head>
-<body>
+<body class="container">
 	<h1>New Dojo</h1>
 	<form:form action ="/dojos/create" method="post" modelAttribute="dojo" class="form">
 		<div class="form-group">

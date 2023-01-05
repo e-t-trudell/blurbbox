@@ -25,11 +25,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="eachNinja" items="${dojo.ninjas}">
+			<c:forEach var="ninja" items="${dojo.ninjas}">
 			<tr>
-				<td><c:out value="${eachNinja.firstName}"/></td>
-				<td><c:out value="${eachNinja.lastName}"/></td>
-				<td><c:out value="${eachNinja.age}"/></td>
+				<td><c:out value="${ninja.firstName}"/></td>
+				<td><c:out value="${ninja.lastName}"/></td>
+				<td><c:out value="${ninja.age}"/></td>
 			</tr>
 			</c:forEach>
 		</tbody>

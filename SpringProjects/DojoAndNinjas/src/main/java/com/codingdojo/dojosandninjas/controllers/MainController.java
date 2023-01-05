@@ -66,17 +66,17 @@ public class MainController {
 			return "newNinja.jsp";
 		} else {
 			appService.createNinja(ninja);
-			return "redirect:/dojo/" + ninja.getDojo().getId();
+			return "redirect:/dojos/" + ninja.getDojo().getId();
 		}
 	}
 	
 	// this line of code below will be a little bit different from previous iterations since 
 	// we will be doing a one to many relationship.
 	
-	@GetMapping("dojos/{id}")
-	public String Dojo(Model viewModel,@PathVariable("id") Long id) {
+	@GetMapping("/dojos/{id}")
+	public String Dojo(Model viewModel, @PathVariable("id") Long id) {
 		viewModel.addAttribute("dojo", this.appService.getOneDojo(id));
-		
+		System.out.println("the page is trying to render");
 		return "allDojos.jsp";
 	// yes Im very aware that the name allDojos isnt really related to what its actually doing, but lets roll with it for now
 	}	

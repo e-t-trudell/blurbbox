@@ -3,6 +3,8 @@ package com.codingdojo.authentication.controllers;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,12 +13,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.codingdojo.authentication.models.LoginUser;
 import com.codingdojo.authentication.models.User;
+import com.codingdojo.authentication.services.UserService;
 
+@Controller
 public class HomeController {
 	
-	// Add once service is implemented:
-    // @Autowired
-    // private UserService userServ;
+//	 Add once service is implemented:
+     @Autowired
+     private UserService userServ;
     
     @GetMapping("/")
     public String index(Model model) {
@@ -32,8 +36,7 @@ public class HomeController {
     public String register(@Valid @ModelAttribute("newUser") User newUser, 
             BindingResult result, Model model, HttpSession session) {
         
-        // TO-DO Later -- call a register method in the service 
-        // to do some extra validations and create a new user!
+        	User user = userServ.register(newUser, result);
         
         if(result.hasErrors()) {
             // Be sure to send in the empty LoginUser before 
@@ -45,6 +48,7 @@ public class HomeController {
         // No errors! 
         // TO-DO Later: Store their ID from the DB in session, 
         // in other words, log them in.
+        session.setAttribute("userId", user.getId());
     
         return "redirect:/home";
     }

@@ -14,7 +14,7 @@
 <!-- For any Bootstrap that uses JS or jQuery-->
 <script src="/webjars/jquery/jquery.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<title>Login & Registration</title>
+<title>Login and Registration</title>
 </head>
 <body class="container">
 	<h1>Welcome!</h1>

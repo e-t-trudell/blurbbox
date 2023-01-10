@@ -19,38 +19,46 @@
 <body class="container">
 	<h1>Welcome!</h1>
 	<p>Join our growing community.</p>
-	<form:form method="post" modelAttribute="newUser" class="form">
+	<form:form action="/register" method="post" modelAttribute="newUser" class="form">
 		<div>
 			<h2>Register</h2>
 			<div class="form-group">
 				<form:label path="userName">User Name</form:label>
+				<form:errors path="userName" class="text-danger"/>
 				<form:input path="userName" class="form-control"/>
 			</div>
 			<div class="form-group">
 				<form:label path="email">Email:</form:label>
+				<form:errors path="email" class="text-danger"/>
 				<form:input path="email" class="form-control"/>
 			</div>
 			<div class="form-group">
 				<form:label path="password">Password:</form:label>
-				<form:input path="password" class="form-control"/>
+				<form:errors path="password" class="text-danger"/>
+				<form:input type="password" path="password" class="form-control"/>
 			</div>
 			<div class="form-group">
 				<form:label path="confirm">Confirm PW:</form:label>
-				<form:input path="confirm" class="form-control"/>
+				<form:errors path="confirm" class="text-danger"/>
+				<form:input type="password" path="confirm" class="form-control"/>
 			</div>
+			<input type="submit" value="Submit"/>
 		</div>
 	</form:form>
-	<form:form method="post" modelAttribute="newLogin" class="form">
+	<form:form action="/login" method="post" modelAttribute="newLogin" class="form">
 		<div>
 			<h2>Log in</h2>
 			<div class="form-group">
 				<form:label path="email">Email:</form:label>
+				<form:errors path="email" class="text-danger"/>
 				<form:input path="email" class="form-control"/>
 			</div>
 			<div class="form-group">
 				<form:label path="password">Password:</form:label>
-				<form:input path="password" class="form-control"/>
+				<form:errors path="password" class="text-danger"/>
+				<form:input type="password" path="password" class="form-control"/>
 			</div>
+			<input type="submit" value="Submit"/>
 		</div>
 	</form:form>
 	

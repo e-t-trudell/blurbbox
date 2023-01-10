@@ -36,7 +36,7 @@ public class HomeController {
     public String register(@Valid @ModelAttribute("newUser") User newUser, 
             BindingResult result, Model model, HttpSession session) {
         
-        	User user = userServ.register(newUser, result);
+        userServ.register(newUser, result);
         
         if(result.hasErrors()) {
             // Be sure to send in the empty LoginUser before 
@@ -48,7 +48,7 @@ public class HomeController {
         // No errors! 
         // TO-DO Later: Store their ID from the DB in session, 
         // in other words, log them in.
-        session.setAttribute("userId", user.getId());
+        session.setAttribute("userId", newUser.getId());
     
         return "redirect:/home";
     }
@@ -58,7 +58,8 @@ public class HomeController {
             BindingResult result, Model model, HttpSession session) {
         
         // Add once service is implemented:
-        // User user = userServ.login(newLogin, result);
+        User user = userServ.login(newLogin, result);
+    	
     
         if(result.hasErrors()) {
             model.addAttribute("newUser", new User());
@@ -68,7 +69,28 @@ public class HomeController {
         // No errors! 
         // TO-DO Later: Store their ID from the DB in session, 
         // in other words, log them in.
+        session.setAttribute("userId", user.getId());
+        
     
         return "redirect:/home";
+    }
+    
+    // the bottom is important because we want to make sure we can log the user OUT of session
+    // if we dont do this their account may be easy to access for unwanted visitors
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+    	session.setAttribute("userId", null);
+    	return "redirect:/";
+    }
+    
+    @GetMapping("/home")
+    public String welcome(Model model, HttpSession session) {
+    	Long userId = (Long) session.getAttribute("userId");
+    	if(userId==null) {
+    		return "redirect:/";
+    	}
+    	User user = userServ.findById(userId);
+    	model.addAttribute("user", user);
+    	return "welcome.jsp";
     }
 }

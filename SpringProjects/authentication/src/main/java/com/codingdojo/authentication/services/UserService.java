@@ -60,7 +60,7 @@ public class UserService {
         	return null;
         }
         // Otherwise, return the user object
-        return null;
+        return user;
     }
     public User findById(Long id) {
     	Optional<User> potentialUser = userRepo.findById(id);

@@ -48,6 +48,7 @@ public class UserService {
         // Reject if NOT present
         if(!potentialUser.isPresent()) {
         	result.rejectValue("email", "Matches", "User not found!");
+        	return null;
         }
         // User exists, retrieve user from DB
         User user = potentialUser.get();

@@ -17,7 +17,7 @@
 <title>Insert title here</title>
 </head>
 <body class="container">
-	<div>
+	<div class="away">
 		<h1><c:out value="${book.title}"/></h1>
 		<a href="/home">back to the shelves</a>
 	</div>
@@ -29,7 +29,7 @@
 		<p><c:out value="${book.description}"/></p>
 	</div>
 	<div>
-		<a href="/edit"><button class="btn-primary">edit</button></a>
+		<a href="/edit/<c:out value="${book.id}"/>"><button class="btn-primary">edit</button></a>
 		
 		<form action="/destroy/${book.id}" method="post">
 		    <input type="hidden" name="_method" value="delete">

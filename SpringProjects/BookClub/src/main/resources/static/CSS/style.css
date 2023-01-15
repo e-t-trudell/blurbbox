@@ -3,3 +3,8 @@
 .purple {
 	color: purple;
 }
+
+.away {
+	display: flex;
+	justify-content: space-between;
+}

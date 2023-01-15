@@ -17,7 +17,8 @@
 <title>Insert title here</title>
 </head>
 <body class="container">
-	<h1>hello world</h1>
+	<h1>Book Club</h1>
+	<p>A place for friends to share thoughts on books.</p>
 	<div class="d-flex justify-content-around">
 		<form:form action="/register" method="post" modelAttribute="newUser" class="form">
 			<h1>Register</h1>

@@ -17,13 +17,13 @@
 <title>Insert title here</title>
 </head>
 <body class="container">
-	<div>
+	<div class="away">
 		<div>
-		<h1>Welcome, <c:out value="${user.name}"/></h1>
-		<p>Books from everyone's shelves:</p>
+			<h1>Welcome, <c:out value="${user.name}"/></h1>
+			<p>Books from everyone's shelves:</p>
 		</div>
 		<div>
-		<a href="/logout">logout</a>
+		<a href="/logout">logout</a><br>
 		<a href="/books/new">+ Add a book to my shelf!</a>
 		</div>
 	</div>

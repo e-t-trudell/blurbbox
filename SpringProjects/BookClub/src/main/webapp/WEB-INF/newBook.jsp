@@ -17,7 +17,7 @@
 <title>Insert title here</title>
 </head>
 <body class="container">
-	<div>
+	<div class="away">
 		<h1>Add a Book to Your Shelf!</h1>
 		<a href="/home">back to the shelves</a>
 	</div>

@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.codingdojo.bookclub.models.Book;
 import com.codingdojo.bookclub.models.LoginUser;
 import com.codingdojo.bookclub.models.User;
 import com.codingdojo.bookclub.services.AppService;
 import com.codingdojo.bookclub.services.UserService;
+
 
 @Controller
 public class BookController {
@@ -119,6 +121,7 @@ public class BookController {
     
     }
     
+    // the page linked for viewing the individual book
     @GetMapping("/books/{id}")
     public String show(Model model, @PathVariable("id") Long id, HttpSession session) {
     	if(session.getAttribute("userId") == null) {
@@ -129,6 +132,25 @@ public class BookController {
     	model.addAttribute("user", userServ.findById((Long)session.getAttribute("userId")));
     	
     	return "show.jsp";
+    }
+    
+    
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable("id") Long id, Model model) {
+    	Book book = appServ.findById(id);
+    	model.addAttribute("book", book);
+    	return "edit.jsp";
+    }
+    
+    @PutMapping("/update/{id}")
+    public String update(@PathVariable("id") Long id,@Valid @ModelAttribute("book")Book book, BindingResult result) {
+        if (result.hasErrors()) {
+        	
+            return "edit.jsp";
+        } else {
+            appServ.updateBook(book);
+            return "redirect:/home";
+        }
     }
     
     @DeleteMapping("/destroy/{id}")

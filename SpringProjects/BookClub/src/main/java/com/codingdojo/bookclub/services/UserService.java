@@ -33,7 +33,7 @@ public class UserService {
         if(result.hasErrors()) {
         	return null;
         }
-        // Hash and set password, save user to database
+        // Hash and set password, save user to database 
         String hashed = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
         newUser.setPassword(hashed);
         return userRepo.save(newUser);

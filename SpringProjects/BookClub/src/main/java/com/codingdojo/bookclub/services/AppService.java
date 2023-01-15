@@ -10,6 +10,7 @@ import com.codingdojo.bookclub.models.Book;
 import com.codingdojo.bookclub.repositories.BookRepository;
 
 
+
 @Service
 public class AppService {
 	@Autowired
@@ -23,7 +24,7 @@ public class AppService {
 		return null;
 	}
 	
-	public List<Book> allBooks() {
+	public List<Book> all() {
 		return bookRepository.findAll();
 	}
 	
@@ -31,5 +32,12 @@ public class AppService {
 		return this.bookRepository.save(book);
 	}
 	
+	public void deleteBook(Long id) {
+    	Optional<Book> optionalBook = bookRepository.findById(id);
+    	if(optionalBook.isPresent()) {
+    		 bookRepository.deleteById(id);
+    	}
+    	
+    }
 	
 }

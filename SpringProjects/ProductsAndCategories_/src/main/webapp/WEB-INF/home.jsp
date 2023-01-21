@@ -18,5 +18,39 @@
 </head>
 <body class="container">
 	<h1>Home Page</h1>
+	<div>
+		<a href="/product/create">New Product</a> <br>
+		<a href="/categories/create">New Category</a>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Products</th>
+				<th>Categories</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				
+					<td>
+						<ul>
+							<c:forEach var="product" items="${products}">
+								<li><a href="products/<c:out value="${product.id}"/>"><c:out value="${product.name}"/></a></li>
+							</c:forEach>
+						</ul>
+					</td>
+				
+				
+					<td>
+						<ul>
+							<c:forEach var="category" items="${categories}">
+								<li><a href="categories/<c:out value="${category.id}"/>"><c:out value="${category.name}"/></a></li>
+							</c:forEach>
+						</ul>
+					</td>
+				
+			</tr>
+		</tbody>
+	</table>
 </body>
 </html>

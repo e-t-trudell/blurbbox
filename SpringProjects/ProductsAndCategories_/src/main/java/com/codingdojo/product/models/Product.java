@@ -15,7 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -28,14 +28,11 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-    @NotBlank(message="Name must not be blank")
     private String name;
     
-    @NotBlank(message="Description must not be blank")
     private String description;
     
-    @NotBlank(message="Price must not be blank")
-    private double price;
+    private Double price;
     
 
     @Column(updatable=false)
@@ -80,11 +77,11 @@ public class Product {
 		this.description = description;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
@@ -102,6 +99,14 @@ public class Product {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+	
+	public List<Category> getCategories() {
+		return categories;
+	}
+	
+	public void setCategories (List<Category>categories) {
+		this.categories = categories;
 	}
 	
 	@PrePersist

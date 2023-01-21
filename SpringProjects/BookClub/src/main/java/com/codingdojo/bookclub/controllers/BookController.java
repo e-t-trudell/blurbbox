@@ -107,7 +107,6 @@ public class BookController {
     	
     	return "newBook.jsp";
     			
-    }
     
     @PostMapping("/books/create")
     public String createBook(@Valid @ModelAttribute("book")Book book, BindingResult result, HttpSession session, Model model) {

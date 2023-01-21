@@ -17,29 +17,27 @@
 <title>Insert title here</title>
 </head>
 <body class="container">
-	<h1><c:out value="${product.name}"/></h1>
+	<h1>${category.name}</h1>
 	<div>
-		<a href="/home">Home</a>
+		<p><a href="/home">Home</a></p>
 	</div>
-	<div>
-		<h3>Categories:</h3>
-		<ul>
-			<c:forEach var="category" items="${assignedCategories}">
-				<li><c:out value="${category.name}"/></li>
-				
-			</c:forEach>
-		</ul>
-		
-	</div>
+	<h3>Products:</h3>
+	
+	<ul>
+		<c:forEach var="product" items="${assignedProducts}">
+			<li><c:out value="${product.name}"/></li>
+		</c:forEach>
+	</ul>
 	<hr>
-	<form action="/products/${id}" method="post">
-		<h3>Add Category:</h3>
-		<select name="categoryId" id="categoryId">
-			<c:forEach var="category" items="${unassignedCategories}">
-				<option value="${category.id}">${category.name}</option>
+	
+	<form action="/categories/${id}" method="post">
+		<h3>Add Product</h3>
+		<select name="productId" id="productId">
+			<c:forEach var="product" items="${unassignedProducts}">
+				<option value="${product.id}">${product.name}</option>
 			</c:forEach>
 		</select>
-		<input class="button" type="submit" value="Add"/>
+		<input class="input" class="button" type="submit" value="Add"/> 
 	</form>
 </body>
 </html>

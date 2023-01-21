@@ -17,29 +17,26 @@
 <title>Insert title here</title>
 </head>
 <body class="container">
-	<h1><c:out value="${product.name}"/></h1>
+	<h1>New Category</h1>
 	<div>
 		<a href="/home">Home</a>
 	</div>
-	<div>
-		<h3>Categories:</h3>
-		<ul>
-			<c:forEach var="category" items="${assignedCategories}">
-				<li><c:out value="${category.name}"/></li>
-				
-			</c:forEach>
-		</ul>
-		
-	</div>
-	<hr>
-	<form action="/products/${id}" method="post">
-		<h3>Add Category:</h3>
-		<select name="categoryId" id="categoryId">
-			<c:forEach var="category" items="${unassignedCategories}">
-				<option value="${category.id}">${category.name}</option>
-			</c:forEach>
-		</select>
-		<input class="button" type="submit" value="Add"/>
-	</form>
+	
+	<form:form action="/categories/create" method="post" modelAttribute="category">
+		<table class="table">
+			<thead>
+				<tr>
+					<td>Name:</td>
+					<td>
+						<form:errors path="name" class="text-danger"/>
+							<form:input class="input" path="name"/>
+					</td>
+				</tr>
+				<tr>
+					<td><input class="button" type="submit" value="Submit"/></td>
+				</tr>
+			</thead>
+		</table>
+	</form:form>
 </body>
 </html>

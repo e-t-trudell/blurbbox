@@ -22,7 +22,8 @@ public class BookClubApplication {
         ajpConnector.setSecure(false);
         ajpConnector.setAllowTrace(false);
         ajpConnector.setScheme("http");
-       ((AbstractAjpProtocol<?>)ajpConnector.getProtocolHandler()).setSecretRequired(false);
+       ((AbstractAjpProtocol<?
+    		   >)ajpConnector.getProtocolHandler()).setSecretRequired(false);
     tomcat.addAdditionalTomcatConnectors(ajpConnector);
     return tomcat;
     }

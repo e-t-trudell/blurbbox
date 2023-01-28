@@ -3,6 +3,7 @@ package com.codingdojo.projectmanager.models;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
@@ -25,9 +27,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotEmpty(message="Name is required!")
+    @NotEmpty(message="First name is required!")
     @Size(min=3, max=30, message="Name must be between 3 and 30 characters")
-    private String name;
+    private String firstName;
+    
+    @NotEmpty(message="Last name is required!")
+    @Size(min=3, max=30, message="Name must be between 3 and 30 characters")
+    private String lastName;
     
     @NotEmpty(message="Email is required!")
     @Email(message="Please enter a valid email!")
@@ -42,15 +48,27 @@ public class User {
     @Size(min=8, max=128, message="Confirm Password must be between 8 and 128 characters")
     private String confirm;
     
-    @ManyToMany(mappedBy="user", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
     		name="users_projects",
     		joinColumns = @JoinColumn(name = "user_id"),
-    		inverseJoinColumns = @JoinColumn(name = "project_id")
+    		inverseJoinColumns = @JoinColumn(name = "project_id") 
     		)
     private List<Project> projects;
+    
+    @Column(updatable=false)
+    @OneToMany(mappedBy="lead", fetch = FetchType.LAZY)
+    private List<Project> projectsLed;
   
-    public User() {
+    public List<Project> getProjectsLed() {
+		return projectsLed;
+	}
+
+	public void setProjectsLed(List<Project> projectsLed) {
+		this.projectsLed = projectsLed;
+	}
+
+	public User() {
     	
     }
 
@@ -62,12 +80,22 @@ public class User {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	
+
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getEmail() {

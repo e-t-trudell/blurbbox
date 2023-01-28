@@ -52,6 +52,10 @@
             <artifactId>jbcrypt</artifactId>
             <version>0.4</version>
 		</dependency>
+		<dependency>
+	        <groupId>javax.validation</groupId>
+	        <artifactId>validation-api</artifactId>
+	    </dependency>
 
 	    
 	    <!-- BOOTSTRAP DEPENDENCIES -->

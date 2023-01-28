@@ -1,5 +1,6 @@
 package com.codingdojo.projectmanager.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -33,7 +34,7 @@ public class UserService {
         }
         // Return null if result has errors
         if(result.hasErrors()) { 
-        	return null;
+        	return null;  
         }
         // Hash and set password, save user to database 
         String hashed = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
@@ -65,6 +66,15 @@ public class UserService {
         // Otherwise, return the user object
         return user;
     } 
+    
+    public List <User> allUsers() {
+    	return userRepo.findAll();
+    }
+    
+    public User updateUser(User user) {
+    	return userRepo.save(user);
+    }
+    
     public User findById(Long id) {
     	Optional<User> potentialUser = userRepo.findById(id);
     	if(potentialUser.isPresent()) {

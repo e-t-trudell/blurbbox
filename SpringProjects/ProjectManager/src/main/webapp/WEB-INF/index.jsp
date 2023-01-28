@@ -23,9 +23,14 @@
 			<div>
 				<h2>Register</h2>
 				<div class="form-group">
-					<form:label path="name">Name</form:label>
-					<form:errors path="name" class="text-danger"/>
-					<form:input path="name" class="form-control"/>
+					<form:label path="lastName">First Name</form:label>
+					<form:errors path="firstName" class="text-danger"/>
+					<form:input path="firstName" class="form-control"/>
+				</div>
+				<div class="form-group">
+					<form:label path="lastName">Last Name</form:label>
+					<form:errors path="lastName" class="text-danger"/>
+					<form:input path="lastName" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<form:label path="email">Email:</form:label>

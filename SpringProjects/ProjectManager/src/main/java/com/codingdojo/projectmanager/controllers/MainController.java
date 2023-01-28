@@ -9,9 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.codingdojo.projectmanager.models.LoginUser;
 import com.codingdojo.projectmanager.models.Project;
@@ -115,7 +118,7 @@ public class MainController {
     }
     
     @PostMapping("/projects/add")
-    public String addProject(@Valid @ModelAttribute("project") Project project, BindingResult result ,HttpSession session, Model model) {
+    public String addProject(@Valid @ModelAttribute("project") Project project, BindingResult result , HttpSession session) {
     	if(session.getAttribute("userId") == null) {
     		return "redirect:/";
     	}
@@ -131,6 +134,70 @@ public class MainController {
     		userServ.updateUser(user);
     		return "redirect:/home";
     	}
+    }
+    
+    @GetMapping("/projects/{id}")
+    public String showProject(@PathVariable("id") Long id, HttpSession session, Model model) {
+    	if(session.getAttribute("userId") == null) {
+    		return "redirect:/";
+    	}
+    	Project project = projectServ.findById(id);
+    	model.addAttribute("project", project);
+    	return "show.jsp";
+    	
+    }
+    
+    @RequestMapping("/home/join/{id}")
+    public String joinTeam(@PathVariable("id") Long id, HttpSession session, Model model) {
+    	if(session.getAttribute("userId") == null) {
+    		return "retdirect:/";
+    	}
+    	Long userId = (Long) session.getAttribute("userId");
+    	
+    	Project project = projectServ.findById(id);
+    	User user = userServ.findById(userId);
+    	
+    	user.getProjects().add(project); // this part adds the user to a project 
+    	userServ.updateUser(user);
+    	
+    	model.addAttribute("user", user);
+    	model.addAttribute("unassignedProjects", projectServ.getUnassignedProjects(user));
+    	model.addAttribute("assignedProjects", projectServ.getAssignedProjects(user));
+    	
+    	return "redirect:/home";
+    }
+    
+    @RequestMapping("/home/leave/{id}")
+    public String leaveTeam(@PathVariable("id") Long id, HttpSession session, Model model) {
+    	if(session.getAttribute("userId") == null) {
+    		return "redirect:/";
+    	}
+    	Long userId = (Long) session.getAttribute("userId");
+    	
+    	Project project = projectServ.findById(id);
+    	User user = userServ.findById(userId);
+    	
+    	user.getProjects().remove(project); // this removes a user from a project 
+    	userServ.updateUser(user); 
+    	
+    	model.addAttribute("user", user);
+    	model.addAttribute("unassignedProjects", projectServ.getUnassignedProjects(user));
+    	model.addAttribute("assignedProjects", projectServ.getAssignedProjects(user));
+    	
+    	return "redirect:/home";
+    }
+    
+    
+    @DeleteMapping("/projects/delete/{id}")
+    public String destroy(@PathVariable("id") Long id, HttpSession session) {
+    	
+    	if(session.getAttribute("userId")== null) {
+    		return "redirect:/";
+    	}
+    	
+    	Project project = projectServ.findById(id);
+        projectServ.deleteProject(project);
+        return "redirect:/home";
     }
     
 }

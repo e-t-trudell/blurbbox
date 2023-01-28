@@ -23,7 +23,7 @@
 	<p><a href="/projects/new">Add Project</a></p>
 
 	<p>All Projects</p>
-	<table class="table-hover">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>Project</th>
@@ -36,10 +36,10 @@
 			<c:forEach var="project" items="${unassignedProjects}">
 				<tr>
 					<c:if test = "${project.lead.id!=user.id}">
-					<td><a href="/projects/${project.id}"><c:out value="${poject.title}"/></a></td>
+					<td><a href="/projects/${project.id}"><c:out value="${project.title}"/></a></td>
 					<td><c:out value="${project.lead.firstName}"/></td>
 					<td><fmt:formatDate value="${project.dueDate}" pattern="MMMM dd"/></td>
-					<td><a href="/home/join/${project.id}}">Join Team</a></td>
+					<td><a href="/home/join/${project.id}">Join Team</a></td>
 					</c:if>
 				</tr>
 			</c:forEach>
@@ -49,7 +49,7 @@
 	
 	<hr>
 	<h4>Your Projects</h4>
-	<table class="table-hover">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>Project</th>
@@ -62,14 +62,14 @@
 			<c:forEach var="project" items="${assignedProjects}">
 				<tr>
 					
-					<td><a href="/projects/${project.id}"><c:out value="${poject.title}"/></a></td>
+					<td><a href="/projects/${project.id}"><c:out value="${project.title}"/></a></td>
 					<td><c:out value="${project.lead.firstName}"/></td>
 					<td><fmt:formatDate value="${project.dueDate}" pattern="MMMM dd"/></td>
 					<c:if test = "${project.lead.id==user.id}">
 						<td><a href="/projects/edit/${project.id}}">Edit Project</a></td>
 					</c:if>
 					<c:if test = "${project.lead.id!=user.id}">
-						<td><a href="/home/leave/${project.id}}">Leave Team</a></td>
+						<td><a href="/home/leave/${project.id}">Leave Team</a></td>
 					</c:if>
 				</tr>
 			</c:forEach>

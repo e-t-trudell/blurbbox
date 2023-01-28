@@ -21,7 +21,7 @@
 	<h3><a href="/home">Dashboard</a></h3>
 	<h1>Create a new project</h1>
 	
-	<form:form action="projects/add" method="post" modelAttribute="project">
+	<form:form action="/projects/add" method="post" modelAttribute="project">
 		<table>
 	    <thead>
 	    	<tr>
@@ -54,7 +54,7 @@
 	        	<td><input class="input" type="submit" value="Submit"/></td>
 	        </tr>
 	    </thead>
-	</table>>
+	</table>
 			
 			
 	</form:form>

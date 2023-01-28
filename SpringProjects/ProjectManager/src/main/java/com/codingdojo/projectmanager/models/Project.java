@@ -17,6 +17,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -34,8 +35,8 @@ public class Project {
     @NotBlank(message="Thoughts must not be blank")
     private String description;
     
-
-    @NotBlank(message="Due Date must not be blank")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @NotNull(message="Due Date must is required")
     private Date dueDate; 
     
 

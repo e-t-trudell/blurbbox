@@ -187,6 +187,37 @@ public class MainController {
     	return "redirect:/home";
     }
     
+    @GetMapping("/projects/edit/{id}")
+    public String editProject(@PathVariable("id") Long id, HttpSession session, Model model) {
+    	if(session.getAttribute("userId") == null) {
+    		return "redirect:/";
+    	}
+    	Project project = projectServ.findById(id);
+    	model.addAttribute("project", project);
+    	return "edit.jsp";
+    }
+    
+    @PostMapping("/projects/update/{id}")
+    public String update(@PathVariable("id") Long id, @Valid @ModelAttribute("project") Project project,
+    		BindingResult result, HttpSession session) {
+    	if(session.getAttribute("userId") == null) {
+    		return "redirect:/";
+    	}
+    	Long userId = (Long) session.getAttribute("userId");
+    	
+    	User user = userServ.findById(userId);
+    	
+    	if(result.hasErrors()) {
+    		return "edit.jsp";
+    	}else {
+    		Project mainProject = projectServ.findById(id);
+    		project.setUsers(mainProject.getUsers());
+    		project.setLead(user);
+    		projectServ.updateProject(project);
+    		return "redirect:/home";
+    	}
+    }
+    
     
     @DeleteMapping("/projects/delete/{id}")
     public String destroy(@PathVariable("id") Long id, HttpSession session) {

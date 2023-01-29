@@ -66,7 +66,7 @@
 					<td><c:out value="${project.lead.firstName}"/></td>
 					<td><fmt:formatDate value="${project.dueDate}" pattern="MMMM dd"/></td>
 					<c:if test = "${project.lead.id==user.id}">
-						<td><a href="/projects/edit/${project.id}}">Edit Project</a></td>
+						<td><a href="/projects/edit/${project.id}">Edit Project</a></td>
 					</c:if>
 					<c:if test = "${project.lead.id!=user.id}">
 						<td><a href="/home/leave/${project.id}">Leave Team</a></td>

@@ -17,7 +17,8 @@
 <title>Insert title here</title>
 </head>
 <body class="container">
-	<h1>Project Manager</h1>
+	<h1 class="title">Project Manager</h1>
+	<p class="title">A place for teams to manage projects</p>
 	<div class="space">
 		<form:form action="/register" method="post" modelAttribute="newUser" class="form">
 			<div>

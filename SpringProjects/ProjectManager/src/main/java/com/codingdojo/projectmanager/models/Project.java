@@ -18,6 +18,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -32,7 +33,8 @@ public class Project {
     @NotBlank(message="Title must not be blank")
     private String title;
     
-    @NotBlank(message="Thoughts must not be blank")
+    @Size(min=3, message="Description must be at least 3 characters")
+    @NotBlank(message="Description must not be blank")
     private String description;
     
     @DateTimeFormat(pattern="yyyy-MM-dd")

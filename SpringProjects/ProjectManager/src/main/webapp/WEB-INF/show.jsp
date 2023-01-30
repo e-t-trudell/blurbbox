@@ -17,21 +17,21 @@
 <title>Insert title here</title>
 </head>
 <body class="container">
-	<div>
+	<div class="away">
 		<h1>Project Details</h1>
 		<a href="/home">Back to Dashboard</a>
 	</div>
-	<div>
+	<div class="away">
 		<h3>Project:</h3>
-		<h3><c:out value="${project.title}"/></h3>
+		<h2><c:out value="${project.title}"/></h2>
 	</div>
-	<div>
+	<div class="away">
 		<h3>Description:</h3>
-		<h3><c:out value="${project.description}"/></h3>
+		<h2><c:out value="${project.description}"/></h2>
 	</div>
-	<div>
+	<div class="away">
 		<h3>Due Date:</h3>
-		<h3><c:out value="${project.dueDate}"/></h3>
+		<h2><c:out value="${project.dueDate}"/></h2>
 	</div>
 	<div>
 		<c:if test= "${project.lead.id==userId}">

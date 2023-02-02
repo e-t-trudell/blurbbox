@@ -33,7 +33,8 @@
 				<th>ID</th>
 				<th>Title</th>
 				<th>Author Name</th>
-				<th>Posted By</th>
+				<th>Owner</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -43,6 +44,12 @@
 					<td><a href="/books/${book.id}"><c:out value="${book.title}"/></a></td>
 					<td><c:out value="${book.author}"/></td>
 					<td><c:out value="${book.user.name}"/></td>
+					<c:if test="${user==book.user}">
+						<td><a href="books/${book.id}">edit</a><a href="books/${book.id}/delete">delete</a></td>
+					</c:if>
+					<c:if test="${user!=book.user}">
+						<td><a href="books/${book.id}/borrow">borrow</a></td>
+					</c:if>
 				</tr>
 			</c:forEach>
 		</tbody>

@@ -158,4 +158,10 @@ public class BookController {
         return "redirect:/home";
     }
     
+    
+    @GetMapping("/books/{id}/edit")
+    public String editBook() {
+    	return "edit.jsp";
+    }
+    
 }

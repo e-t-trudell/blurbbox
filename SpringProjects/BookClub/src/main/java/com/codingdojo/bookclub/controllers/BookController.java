@@ -135,9 +135,13 @@ public class BookController {
     
     
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable("id") Long id, Model model) {
+    public String edit(@PathVariable("id") Long id, Model model, HttpSession session) {
+    	if(session.getAttribute("userId") == null) {
+    		return "redirect:/";
+    	}
     	Book book = appServ.findById(id);
     	model.addAttribute("book", book);
+    	model.addAttribute("user", userServ.findById((Long)session.getAttribute("userId")));
     	return "edit.jsp";
     }
     
@@ -152,16 +156,29 @@ public class BookController {
         }
     }
     
-    @DeleteMapping("/destroy/{id}")
-    public String destroy(@PathVariable("id") Long id) {
+    
+    // so Im not exactly sure why the GetMapping is needed. I've used DeleteMapping on other projects
+    // successfully, but here I'm just a bit lost why DeleteMapping doesnt work.
+    @GetMapping("/destroy/{id}")
+    public String destroy(@PathVariable("id") Long id, HttpSession session) {
+    	if(session.getAttribute("userId") == null) {
+    		return "redirect:/";
+    	}
+    	
         appServ.deleteBook(id);
+        return "redirect:/home";
+    }
+    @GetMapping("/books/{id}/borrow")
+    public String borrowBooks(@PathVariable("id") Long id, HttpSession session) {
+    	if(session.getAttribute("userId") == null) {
+    		return "redirect:/";
+    	}
+    	
+    	appServ.setBorrower(userServ.findById((Long)session.getAttribute("userId")));
+    	appServ.updateBook(book);
         return "redirect:/home";
     }
     
     
-    @GetMapping("/books/{id}/edit")
-    public String editBook() {
-    	return "edit.jsp";
-    }
     
 }

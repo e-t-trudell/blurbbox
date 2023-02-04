@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.codingdojo.projectmanager.models.LoginUser;
@@ -197,7 +198,7 @@ public class MainController {
     	return "edit.jsp";
     }
     
-    @PostMapping("/projects/update/{id}")
+    @PutMapping("/projects/update/{id}")
     public String update(@PathVariable("id") Long id, @Valid @ModelAttribute("project") Project project,
     		BindingResult result, HttpSession session) {
     	if(session.getAttribute("userId") == null) {

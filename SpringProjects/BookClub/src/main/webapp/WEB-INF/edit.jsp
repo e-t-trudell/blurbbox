@@ -44,6 +44,6 @@
 		</div>
 		<input type="submit" value="Submit"/>
 	</form:form>
-	<button><a href="/books/${book.id}/delete">delete book</a></button>
+	<button><a href="/destroy/${book.id}">delete book</a></button>
 </body>
 </html>

@@ -39,18 +39,48 @@
 		</thead>
 		<tbody>
 			<c:forEach var="book" items="${books}">
+				<c:if test="${user.id!= book.borrower.id}">
 				<tr>
 					<td><c:out value="${book.id}"/></td>
 					<td><a href="/books/${book.id}"><c:out value="${book.title}"/></a></td>
 					<td><c:out value="${book.author}"/></td>
 					<td><c:out value="${book.user.name}"/></td>
 					<c:if test="${user==book.user}">
-						<td><a href="books/${book.id}">edit</a><a href="books/${book.id}/delete">delete</a></td>
+						<td><a href="edit/${book.id}">edit</a>  <a href="books/${book.id}/delete">delete</a></td>
 					</c:if>
 					<c:if test="${user!=book.user}">
 						<td><a href="books/${book.id}/borrow">borrow</a></td>
 					</c:if>
 				</tr>
+				</c:if>
+			</c:forEach>
+		</tbody>
+	</table>
+	<h3>Books I'm borrowing</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Author Name</th>
+				<th>Owner</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="book" items="${books}">
+			<c:if test="${user.id==book.borrower.id}">
+				<tr>
+					<td><c:out value="${book.id}"/></td>
+					<td><a href="/books/${book.id}"><c:out value="${book.title}"/></a></td>
+					<td><c:out value="${book.author}"/></td>
+					<td><c:out value="${book.user.name}"/></td>
+					
+					<c:if test="${user!=book.user}">
+						<td><a href="books/${book.id}/return">return</a></td>
+					</c:if>
+				</tr>
+			</c:if>
 			</c:forEach>
 		</tbody>
 	</table>

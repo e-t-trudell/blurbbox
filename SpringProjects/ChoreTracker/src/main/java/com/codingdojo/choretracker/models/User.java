@@ -52,7 +52,7 @@ public class User {
     @JoinTable(
     		name="users_chores",
     		joinColumns = @JoinColumn(name = "user_id"),
-    		inverseJoinColumns = @JoinColumn(name = "chores_id") 
+    		inverseJoinColumns = @JoinColumn(name = "chore_id") 
     		)
     private List<Chore> chores;
     

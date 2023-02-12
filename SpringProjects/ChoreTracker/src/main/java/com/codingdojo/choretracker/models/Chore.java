@@ -53,7 +53,7 @@ public class Chore {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
     		name="users_chores",
-    		joinColumns = @JoinColumn(name = "chores_id"),
+    		joinColumns = @JoinColumn(name = "chore_id"),
     		inverseJoinColumns = @JoinColumn(name = "user_id")
     		)
     private List<User> users;

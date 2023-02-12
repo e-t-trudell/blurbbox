@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.codingdojo.choretracker.models.Chore;
 import com.codingdojo.choretracker.models.LoginUser;
 import com.codingdojo.choretracker.models.User;
 import com.codingdojo.choretracker.services.ChoreService;
@@ -49,7 +50,7 @@ public class MainController {
         // in other words, log them in.
         session.setAttribute("userId", newUser.getId());
     
-        return "redirect:/home";
+        return "redirect:/dashboard";
     }
     
     @PostMapping("/login")
@@ -71,7 +72,7 @@ public class MainController {
         session.setAttribute("userId", user.getId());
         
     
-        return "redirect:/home";
+        return "redirect:/dashboard";
     }
     
     // the bottom is important because we want to make sure we can log the user OUT of session
@@ -82,7 +83,7 @@ public class MainController {
     	return "redirect:/";
     }
     
-    @GetMapping("/home")
+    @GetMapping("/dashboard")
     public String welcome(Model model, HttpSession session) {
     	if(session.getAttribute("userId")==null) {
     		return "redirect:/";
@@ -95,4 +96,36 @@ public class MainController {
     	model.addAttribute("assignedChores", choreServ.getAssignedChores((user)));
     	return "home.jsp";
     }
+    
+    @GetMapping("/addJob")
+    public String newChore(@ModelAttribute("chore") Chore chore, HttpSession session, Model model) {
+    	if(session.getAttribute("userId") == null) {
+    		return "redirect:/";
+    	}
+    	Long userId = (Long) session.getAttribute("userId");
+    	
+    	model.addAttribute("userId", userId);
+    	return "newChore.jsp";
+    }
+    
+    @PostMapping("/chores/add")
+    public String addChore(@Valid @ModelAttribute("chore") Chore chore, BindingResult result, HttpSession session) {
+    	if(session.getAttribute("userId") == null) {
+    		return "redirect:/";
+    	}
+    	
+    	if(result.hasErrors()) {
+    		return "newChore.jsp";
+    	}else {
+    		choreServ.addChore(chore);
+    		
+    		Long userId = (Long) session.getAttribute("userId");
+    		User user = userServ.findById(userId);
+    		user.getChores().add(chore);
+    		userServ.updateUser(user);
+    		return "redirect:/dashboard";
+    	}
+    	
+    }
+    
 }

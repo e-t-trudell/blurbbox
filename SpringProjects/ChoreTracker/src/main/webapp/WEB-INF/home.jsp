@@ -21,6 +21,9 @@
 		<h3>Welcome <c:out value="${user.firstName}"/></h3>
 		<a href="/logout">Logout</a>
 	</div>
+	<div>
+		<a href="/addJob">Add A Job</a>
+	</div>
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -53,9 +56,11 @@
 			</tr>
 		</thead>
 		<tbody>
+			<c:forEach var="chore" items="${assignedProjects}">
 			<tr>
 				<td><c:out value="${chore.title}"/></td>
 			</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 	

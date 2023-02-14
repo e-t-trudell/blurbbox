@@ -11,8 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -47,10 +47,10 @@ public class Chore {
     private Date updatedAt;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinTable(name="chore_id")
+    @JoinTable(name="creator_id")
     private User creator;
     
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinTable(
     		name="users_chores",
     		joinColumns = @JoinColumn(name = "chore_id"),

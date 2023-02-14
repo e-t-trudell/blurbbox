@@ -2,21 +2,21 @@ package com.codingdojo.choretracker.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
 
 
 
@@ -48,16 +48,12 @@ public class User {
     @Size(min=8, max=128, message="Confirm Password must be between 8 and 128 characters")
     private String confirm;
     
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-    		name="users_chores",
-    		joinColumns = @JoinColumn(name = "user_id"),
-    		inverseJoinColumns = @JoinColumn(name = "chore_id") 
-    		)
+    @OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Chore> chores;
     
+    
     @Column(updatable=false)
-    @OneToMany(mappedBy="creator", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="creator", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Chore> choresLed;
   
     public List<Chore> getChoresLed() {

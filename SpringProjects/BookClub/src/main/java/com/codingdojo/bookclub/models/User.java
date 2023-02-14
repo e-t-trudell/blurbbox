@@ -39,10 +39,10 @@ public class User {
     @Size(min=8, max=128, message="Confirm Password must be between 8 and 128 characters")
     private String confirm;
     
-    @OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
     private List<Book> books;
     
-    @OneToMany(mappedBy="borrower", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="borrower", fetch = FetchType.LAZY)
     private List<Book> borrowedBooks;
     
     public User() {

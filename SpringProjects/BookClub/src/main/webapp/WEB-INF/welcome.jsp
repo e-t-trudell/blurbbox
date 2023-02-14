@@ -46,7 +46,7 @@
 					<td><c:out value="${book.author}"/></td>
 					<td><c:out value="${book.user.name}"/></td>
 					<c:if test="${user==book.user}">
-						<td><a href="edit/${book.id}">edit</a>  <a href="books/${book.id}/delete">delete</a></td>
+						<td><a href="edit/${book.id}">edit</a>  <a href="destroy/${book.id}">delete</a></td>
 					</c:if>
 					<c:if test="${user!=book.user}">
 						<td><a href="books/${book.id}/borrow">borrow</a></td>

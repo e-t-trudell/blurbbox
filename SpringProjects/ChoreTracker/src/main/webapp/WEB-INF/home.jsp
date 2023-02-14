@@ -32,23 +32,28 @@
 				<th>Action</th>
 			</tr>
 		</thead>
+		<!-- So I wanna be able to put all created Chores in this table but it auto assigns the chore to the
+		Creator, how can I make the auto assign turn off???  -->
 		<tbody>
-			<c:forEach var="chore" items="${unassignedChores}">
+			<c:forEach var="chore" items="${chores}">
 				<tr>
-					<c:if test = "${chore.creator.id!= user.id}">
-						<td><c:out value="${chore.title}"/></td>
-						<td><c:out value="${chore.location}"/></td>
-						<td>
-							<a href="/">View</a>
-							<a href="/">add</a>
-							<a href="/">edit</a>
+					
+					<td><c:out value="${chore.title}"/></td>
+					<td><c:out value="${chore.location}"/></td>
+					<td>
+						<a href="/view/${chore.id}">View</a>
+						<a href="/get/${chore.id}">add</a>
+						<c:if test="${chore.creator.id==user.id}">
+							<a href="/edit/${chore.id}">edit</a>
 							<a href="/">cancel</a>
-						</td>
-					</c:if>
+						</c:if>
+					</td>
+					
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -56,9 +61,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="chore" items="${assignedProjects}">
+			<c:forEach var="chore" items="${assignedChores}">
 			<tr>
 				<td><c:out value="${chore.title}"/></td>
+				<td>
+					<a href="/view/${chore.id}">View</a>
+					<a href>Done</a>
+				</td>
 			</tr>
 			</c:forEach>
 		</tbody>

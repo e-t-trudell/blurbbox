@@ -9,7 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.codingdojo.choretracker.models.Chore;
 import com.codingdojo.choretracker.models.LoginUser;
@@ -126,6 +129,75 @@ public class MainController {
     		return "redirect:/dashboard";
     	}
     	
+    }
+    
+    @RequestMapping("/get/{id}")
+    public String getJob(@PathVariable("id") Long id, HttpSession session, Model model) {
+    	if(session.getAttribute("userId") == null) {
+    		return "retdirect:/";
+    	}
+    	Long userId = (Long) session.getAttribute("userId");
+    	
+    	Chore chore = choreServ.findById(id);
+    	User user = userServ.findById(userId);
+    	
+    	user.getChores().add(chore); // this part adds the user to a project 
+    	userServ.updateUser(user);
+    	
+    	model.addAttribute("user", user);
+    	model.addAttribute("unassignedChores", choreServ.getUnassignedChores(user));
+    	model.addAttribute("assignedChores", choreServ.getAssignedChores(user));
+    	
+    	return "redirect:/dashboard";
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    @GetMapping("/edit/{id}")
+    public String editChore(@PathVariable("id") Long id, HttpSession session, Model model) {
+    	if(session.getAttribute("userId") == null) {
+    		return "redirect:/";
+    	}
+    	Chore chore = choreServ.findById(id);
+    	model.addAttribute("chore", chore);
+    	return "edit.jsp";
+    }
+    
+    @PutMapping("/update/{id}")
+    public String update(@PathVariable("id") Long id, @Valid @ModelAttribute("chore") Chore chore,
+    		BindingResult result, HttpSession session) {
+    	if(session.getAttribute("userId") == null) {
+    		return "redirect:/";
+    	}
+    	Long userId = (Long) session.getAttribute("userId");
+    	
+    	User user = userServ.findById(userId);
+    	
+    	if(result.hasErrors()) {
+    		return "edit.jsp";
+    	}else {
+    		Chore mainChore = choreServ.findById(id);
+    		chore.setUsers(mainChore.getUsers());
+    		chore.setCreator(user);
+    		choreServ.updateChore(chore);
+    		return "redirect:/dashboard";
+    	}
+    }
+    
+    @GetMapping("view/{id}")
+    public String viewChore(@PathVariable("id") Long id, HttpSession session, Model model) {
+    	if(session.getAttribute("userId") == null) {
+    		return "redirect:/";
+    	}
+    	Chore chore = choreServ.findById(id);
+    	model.addAttribute("chore", chore);
+    	return "show.jsp";
     }
     
 }

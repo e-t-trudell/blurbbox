@@ -36,11 +36,8 @@ public class AppService {
 		return bookRepository.save(book);
 	}
 	
-	public void deleteBook(Long id) {
-    	Optional<Book> optionalBook = bookRepository.findById(id);
-    	if(optionalBook.isPresent()) {
-    		 bookRepository.deleteById(id);
-    	}
+	public void deleteBook(Book book) {
+    	bookRepository.delete(book);
     	
     }
 	

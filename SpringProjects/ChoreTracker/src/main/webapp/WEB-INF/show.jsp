@@ -29,7 +29,7 @@
 			<p><c:out value="${chore.description}"/></p>
 			<p><c:out value="${chore.description}"/></p>
 			<p>Location:<c:out value="${chore.location}"/></p>
-			<p>Posted By:<c:out value="${chore.creator.firstName}"/></p>
+			<p>Posted By:<c:out value="${chore.user.firstName}"/></p>
 			<p>Posted On:<c:out value="${chore.createdAt}"/></p>
 		</div>
 		<h3><a href="/get/${chore.id}">Add To My Jobs</a></h3>

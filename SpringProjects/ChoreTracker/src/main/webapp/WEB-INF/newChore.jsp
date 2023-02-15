@@ -51,8 +51,8 @@
 					</td>
 				</tr>
 				
-				<form:errors path="creator" class="error"/>
-				<form:input type="hidden" path="creator" value="${userId}" class="form-control"/>
+				<form:errors path="user" class="error"/>
+				<form:input type="hidden" path="user" value="${user.id}" class="form-control"/>
 				
 				<tr>
 		        	<td><input class="input" type="submit" value="Submit"/></td>

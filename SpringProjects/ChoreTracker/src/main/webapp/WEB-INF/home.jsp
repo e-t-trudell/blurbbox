@@ -37,17 +37,21 @@
 		<tbody>
 			<c:forEach var="chore" items="${chores}">
 				<tr>
-					
-					<td><c:out value="${chore.title}"/></td>
-					<td><c:out value="${chore.location}"/></td>
-					<td>
-						<a href="/view/${chore.id}">View</a>
-						<a href="/get/${chore.id}">add</a>
-						<c:if test="${chore.creator.id==user.id}">
-							<a href="/edit/${chore.id}">edit</a>
-							<a href="/">cancel</a>
-						</c:if>
-					</td>
+					<c:if test="${user.id!= chore.worker.id}">
+						<td><c:out value="${chore.title}"/></td>
+						<td><c:out value="${chore.location}"/></td>
+						<td>
+							
+							<a href="/view/${chore.id}">View</a>
+							<a href="/get/${chore.id}">add</a>
+							<c:if test="${user==chore.user}">
+								<a href="/edit/${chore.id}">edit</a>
+								<a href="/destroy/${chore.id}">cancel</a>
+							</c:if>
+						
+							
+						</td>
+					</c:if>
 					
 				</tr>
 			</c:forEach>
@@ -61,14 +65,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="chore" items="${assignedChores}">
-			<tr>
-				<td><c:out value="${chore.title}"/></td>
-				<td>
-					<a href="/view/${chore.id}">View</a>
-					<a href>Done</a>
-				</td>
-			</tr>
+			<c:forEach var="chore" items="${chores}">
+			<c:if test="${user.id==chore.worker.id}">
+				<tr>
+					<td><c:out value="${chore.title}"/></td>
+					<td>
+						<a href="/view/${chore.id}">View</a>
+						<a href="/destroy/${chore.id}">Done</a>
+					</td>
+				</tr>
+			</c:if>
 			</c:forEach>
 		</tbody>
 	</table>

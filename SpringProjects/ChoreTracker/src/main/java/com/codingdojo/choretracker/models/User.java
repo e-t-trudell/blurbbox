@@ -2,8 +2,7 @@ package com.codingdojo.choretracker.models;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,11 +27,11 @@ public class User {
     private Long id;
     
     @NotEmpty(message="First name is required!")
-    @Size(min=3, max=30, message="Name must be between 3 and 30 characters")
+    @Size(min=3, max=30, message="First name must be between 3 and 30 characters")
     private String firstName;
     
-    @NotEmpty(message="last name is required!")
-    @Size(min=3, max=30, message="Name must be between 3 and 30 characters")
+    @NotEmpty(message="Last name is required!")
+    @Size(min=3, max=30, message="Last name must be between 3 and 30 characters")
     private String lastName;
     
     @NotEmpty(message="Email is required!")
@@ -48,21 +47,11 @@ public class User {
     @Size(min=8, max=128, message="Confirm Password must be between 8 and 128 characters")
     private String confirm;
     
-    @OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
     private List<Chore> chores;
     
-    
-    @Column(updatable=false)
-    @OneToMany(mappedBy="creator", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Chore> choresLed;
-  
-    public List<Chore> getChoresLed() {
-		return choresLed;
-	}
-
-	public void setChoresLed(List<Chore> choresLed) {
-		this.choresLed = choresLed;
-	}
+    @OneToMany(mappedBy="worker", fetch = FetchType.LAZY)
+    private List<Chore> workedChores;
     
     public User() {
     	
@@ -76,6 +65,8 @@ public class User {
 		this.id = id;
 	}
 
+	
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -83,6 +74,7 @@ public class User {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	
 
 	public String getLastName() {
 		return lastName;
@@ -123,6 +115,16 @@ public class User {
 	public void setChores(List<Chore> chores) {
 		this.chores = chores;
 	}
+
+	public List<Chore> getWorkedChores() {
+		return workedChores;
+	}
+
+	public void setWorkedChores(List<Chore> workedChores) {
+		this.workedChores = workedChores;
+	}
+
+	
 
     
 }

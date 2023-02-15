@@ -27,6 +27,7 @@
 	</div>
 	
 	<form:form action="/update/${chore.id}" method="post" modelAttribute="chore">
+		<input type="hidden" name="_method" value="put">
 		<table>
 			<thead>
 				<tr>

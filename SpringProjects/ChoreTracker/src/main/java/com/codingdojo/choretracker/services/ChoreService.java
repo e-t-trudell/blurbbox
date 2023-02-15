@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.codingdojo.choretracker.models.Chore;
-import com.codingdojo.choretracker.models.User;
+
 import com.codingdojo.choretracker.repositories.ChoreRepository;
 
 
@@ -27,13 +27,6 @@ private final ChoreRepository choreRepository;
 		return choreRepository.save(chore);
 	}
 	
-	public List<Chore> getAssignedChores(User user){
-		return choreRepository.findAllByUsers(user);
-	}
-	
-	public List<Chore> getUnassignedChores(User user){
-		return choreRepository.findByUsersNotContains(user);
-	}
 	
 	public Chore addChore(Chore chore) {
 		return choreRepository.save(chore);

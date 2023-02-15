@@ -95,8 +95,8 @@ public class MainController {
     	User user = userServ.findById(userId);
     	
     	model.addAttribute("user", user);
-    	model.addAttribute("unassignedChores", choreServ.getUnassignedChores(user));
-    	model.addAttribute("assignedChores", choreServ.getAssignedChores((user)));
+    	model.addAttribute("chores", choreServ.allChores());
+    	model.addAttribute("user", userServ.findById((Long)session.getAttribute("userId")));
     	return "home.jsp";
     }
     
@@ -105,9 +105,8 @@ public class MainController {
     	if(session.getAttribute("userId") == null) {
     		return "redirect:/";
     	}
-    	Long userId = (Long) session.getAttribute("userId");
-    	
-    	model.addAttribute("userId", userId);
+    	User user = userServ.findById((Long)session.getAttribute("userId"));
+    	model.addAttribute("user", user);
     	return "newChore.jsp";
     }
     
@@ -120,12 +119,9 @@ public class MainController {
     	if(result.hasErrors()) {
     		return "newChore.jsp";
     	}else {
+    		
     		choreServ.addChore(chore);
     		
-    		Long userId = (Long) session.getAttribute("userId");
-    		User user = userServ.findById(userId);
-    		user.getChores().add(chore);
-    		userServ.updateUser(user);
     		return "redirect:/dashboard";
     	}
     	
@@ -136,17 +132,9 @@ public class MainController {
     	if(session.getAttribute("userId") == null) {
     		return "retdirect:/";
     	}
-    	Long userId = (Long) session.getAttribute("userId");
-    	
     	Chore chore = choreServ.findById(id);
-    	User user = userServ.findById(userId);
-    	
-    	user.getChores().add(chore); // this part adds the user to a project 
-    	userServ.updateUser(user);
-    	
-    	model.addAttribute("user", user);
-    	model.addAttribute("unassignedChores", choreServ.getUnassignedChores(user));
-    	model.addAttribute("assignedChores", choreServ.getAssignedChores(user));
+    	chore.setWorker(userServ.findById((Long)session.getAttribute("userId")));
+    	choreServ.updateChore(chore);
     	
     	return "redirect:/dashboard";
     }
@@ -166,6 +154,7 @@ public class MainController {
     	}
     	Chore chore = choreServ.findById(id);
     	model.addAttribute("chore", chore);
+    	model.addAttribute("user", userServ.findById((Long)session.getAttribute("userId")));
     	return "edit.jsp";
     }
     
@@ -175,19 +164,13 @@ public class MainController {
     	if(session.getAttribute("userId") == null) {
     		return "redirect:/";
     	}
-    	Long userId = (Long) session.getAttribute("userId");
-    	
-    	User user = userServ.findById(userId);
-    	
-    	if(result.hasErrors()) {
-    		return "edit.jsp";
-    	}else {
-    		Chore mainChore = choreServ.findById(id);
-    		chore.setUsers(mainChore.getUsers());
-    		chore.setCreator(user);
-    		choreServ.updateChore(chore);
-    		return "redirect:/dashboard";
-    	}
+    	if (result.hasErrors()) {
+        	
+            return "edit.jsp";
+        } else {
+            choreServ.updateChore(chore);
+            return "redirect:/dashboard";
+        }
     }
     
     @GetMapping("view/{id}")
@@ -198,6 +181,17 @@ public class MainController {
     	Chore chore = choreServ.findById(id);
     	model.addAttribute("chore", chore);
     	return "show.jsp";
+    }
+    
+    @GetMapping("/destroy/{id}")
+    public String destroy(@PathVariable("id") Long id, HttpSession session) {
+    	if(session.getAttribute("userId") == null) {
+    		return "redirect:/";
+    	}
+    	Chore chore = choreServ.findById(id);
+    	
+        choreServ.deleteChore(chore);
+        return "redirect:/dashboard";
     }
     
 }

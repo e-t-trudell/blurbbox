@@ -1,0 +1,31 @@
+@charset "ISO-8859-1";
+
+.box {
+	border-style: solid;
+	padding: 25px;
+}
+
+
+.end {
+	display: flex;
+	justify-content: end;
+}
+
+.away {
+
+	display: flex;
+	justify-content: space-between;
+	
+}
+
+.awayer {
+	width: 250px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.helper{
+	width: 100px;
+	margin: 20px;
+}

@@ -16,8 +16,9 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <title>A Web Page</title>
 </head>
-<body class='container'>
-	<h1>Welcome to Chore Tracker</h1>
+<body class='container '>
+	<h1>Welcome to the Chore Tracker</h1>
+	<div class="away">
 	<div class="d-flex justify-content-around">
 		<form:form action="/register" method="post" modelAttribute="newUser" class="form">
 			<h1>Register</h1>
@@ -27,7 +28,7 @@
 				<form:input path="firstName" class="form-control"/>
 			</div>
 			<div class="form-group">
-				<form:label path="lastName">last Name</form:label>
+				<form:label path="lastName">Last Name</form:label>
 				<form:errors path="lastName" class="text-danger"/>
 				<form:input path="lastName" class="form-control"/>
 			</div>
@@ -46,11 +47,13 @@
 				<form:errors path="confirm" class="text-danger"/>
 				<form:input type="password" path="confirm" class="form-control"/>
 			</div>
-			<input type="submit" value="Submit"/>
+			<input type="submit" value="Register"/>
 		</form:form>
+		<div class="helper">
+		</div>
 		<form:form action="/login" method="post" modelAttribute="newLogin" class="form">
 			<div>
-				<h2>Log in</h2>
+				<h1>Log in</h1>
 				<div class="form-group">
 					<form:label path="email">Email:</form:label>
 					<form:errors path="email" class="text-danger"/>
@@ -61,10 +64,12 @@
 					<form:errors path="password" class="text-danger"/>
 					<form:input type="password" path="password" class="form-control"/>
 				</div>
-				<input type="submit" value="Submit"/>
+				<input type="submit" value="Log In"/>
 			</div>
 		</form:form>
 		
 	</div>
+	</div>
+	
 </body>
 </html>

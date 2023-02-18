@@ -17,6 +17,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -32,13 +33,15 @@ public class Chore {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-    @NotBlank(message="Title must not be blank")
+	@Size(min=3, message="Title must be at least 3 characters!")
+    @NotBlank(message="Title must not be blank!")
     private String title;
     
-    @NotBlank(message="Description must not be blank")
+	@Size(min=10, message="Description must be at least 10 characters!")
+    @NotBlank(message="Description must not be blank!")
     private String description;
     
-    @NotBlank(message="Location must not be blank")
+    @NotBlank(message="Location must not be blank!")
     private String location;
     
 

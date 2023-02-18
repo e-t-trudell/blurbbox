@@ -18,13 +18,17 @@
 <title>Add A Job</title>
 </head>
 <body class="container">
-	<div>
-		<h3>Add a Job</h3>
+	<div class="away">
+		<div>
+			<h3>Add a Job</h3>
+		</div>
+		<div>
+			<a href="/dashboard">Back</a>
+			
+			<a href="/logout">Logout</a>
+		</div>
 	</div>
-	<div>
-		<a href="/dashboard">Back</a>
-		<a href="/logout">Logout</a>
-	</div>
+	
 	
 	<form:form action="/chores/add" method="post" modelAttribute="chore">
 		<table>

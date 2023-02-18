@@ -2,13 +2,11 @@ package com.codingdojo.choretracker.models;
 
 import java.util.List;
 
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -52,6 +50,11 @@ public class User {
     
     @OneToMany(mappedBy="worker", fetch = FetchType.LAZY)
     private List<Chore> workedChores;
+    
+    
+   
+    
+    
     
     public User() {
     	

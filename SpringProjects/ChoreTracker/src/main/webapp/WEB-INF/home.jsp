@@ -17,14 +17,19 @@
 <title>Chore Tracker Dashboard</title>
 </head>
 <body class="container">
-	<div>
-		<h3>Welcome <c:out value="${user.firstName}"/></h3>
-		<a href="/logout">Logout</a>
+	<div class="away">
+		<div class="awayer">
+			<h3>Welcome <c:out value="${user.firstName}"/>!</h3>
+			<a href="/logout">Logout</a>
+		</div>
+		<div>
+			<a href="/addJob">Add A Job</a>
+		</div>
 	</div>
-	<div>
-		<a href="/addJob">Add A Job</a>
-	</div>
-	<table class="table table-hover">
+	
+	
+	<div class="away">
+	<table class="table table-hover border-5 border-dark border">
 		<thead>
 			<tr>
 				<th>Job</th>
@@ -38,9 +43,9 @@
 			<c:forEach var="chore" items="${chores}">
 				<tr>
 					<c:if test="${user.id!= chore.worker.id}">
-						<td><c:out value="${chore.title}"/></td>
-						<td><c:out value="${chore.location}"/></td>
-						<td>
+						<td ><c:out value="${chore.title}"/></td>
+						<td ><c:out value="${chore.location}"/></td>
+						<td >
 							
 							<a href="/view/${chore.id}">View</a>
 							<a href="/get/${chore.id}">add</a>
@@ -57,11 +62,14 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<div class="helper">
 	
-	<table class="table table-hover">
+	</div>
+	<table class="table table-hover border-5 border-dark border">
 		<thead>
 			<tr>
 				<th>My Jobs</th>
+				<th>...</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -78,6 +86,8 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	</div>
+	
 	
 </body>
 </html>

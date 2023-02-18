@@ -29,6 +29,13 @@ public class MainController {
 	@Autowired
 	private ChoreService choreServ;
 	
+	
+
+	
+	
+	
+	
+	
 	@GetMapping("/")
 	public String index(Model model) {
 		model.addAttribute("newUser", new User());

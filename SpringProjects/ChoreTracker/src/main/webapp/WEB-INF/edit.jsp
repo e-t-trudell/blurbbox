@@ -18,13 +18,18 @@
 <title>Edit Job</title>
 </head>
 <body class="container">
-	<div>
-		<h3>Edit Your Job Posting</h3>
+	<div class="away">
+		<div>
+			<h3>Edit Your Job Posting</h3>
+		</div>
+		<div>
+			<a href="/dashboard">Back</a>
+			
+			
+			<a href="/logout">Logout</a>
+		</div>
 	</div>
-	<div>
-		<a href="/dashboard">Back</a>
-		<a href="/logout">Logout</a>
-	</div>
+	
 	
 	<form:form action="/update/${chore.id}" method="post" modelAttribute="chore">
 		<input type="hidden" name="_method" value="put">
@@ -49,6 +54,14 @@
 					<td class="float-left">
 						<form:errors path="location" class="text-danger"/>
 						<form:input class="input" path="location"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<div class="form-group">
+					<form:errors path="user" class="error"/>
+					<form:input type="hidden" path="user" value="${user.id}" class="form-control"/>
+				</div>
 					</td>
 				</tr>
 				

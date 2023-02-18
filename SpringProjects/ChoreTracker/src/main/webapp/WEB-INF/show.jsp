@@ -18,19 +18,28 @@
 <title>View Job</title>
 </head>
 <body class="container">
+	
+	<div class="away">
+	<div >
+	</div>
 	<div>
 		<a href="/dashboard">Back</a>
+		
 		<a href="/logout">Logout</a>
 	</div>
+		
+	</div>
+		
+	
 	
 	<div>
 		<h2><c:out value="${chore.title}"/></h2>
-		<div>
+		<div class="box">
+			
 			<p><c:out value="${chore.description}"/></p>
-			<p><c:out value="${chore.description}"/></p>
-			<p>Location:<c:out value="${chore.location}"/></p>
-			<p>Posted By:<c:out value="${chore.user.firstName}"/></p>
-			<p>Posted On:<c:out value="${chore.createdAt}"/></p>
+			<p>Location:   <c:out value="${chore.location}"/></p>
+			<p>Posted By:  <c:out value="${chore.user.firstName}"/>  <c:out value="${chore.user.lastName}"/></p>
+			<p>Posted On: <fmt:formatDate value="${chore.createdAt}" pattern="MMMM dd, YYYY"/> </p>
 		</div>
 		<h3><a href="/get/${chore.id}">Add To My Jobs</a></h3>
 	</div>

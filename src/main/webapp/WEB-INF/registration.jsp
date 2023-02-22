@@ -13,7 +13,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Tacos</title>
+    <title>Register!</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
     
     <link rel="stylesheet" href="/css/main.css"> <!-- change to match your file/naming structure -->

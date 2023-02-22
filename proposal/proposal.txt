@@ -1,0 +1,29 @@
+Name: 
+- Brian Denmark testingarea479@gmail.com
+- Christian Lozano christianlozano729@gmail.com
+- Corbett Erickson corb9765@gmail.com
+- Eric Trudell ettrudell17@gmail.com
+
+Stack: Java
+
+Github Repo: (
+https://github.com/e-t-trudell/blurbbox.git
+
+Project Name: Blurbbox
+
+Project Description: A site designed to share thoughts and opinions on shows, movies, shorts, and more! A designated place to rant, rave, or contemplate with people from all across the globe!
+
+MVP Features: 
+- Create a blurb
+- Edit existing blurbs 
+- View own/others blurbs
+- Delete own blurbs
+
+
+
+
+Bonus Features: 
+- Bootstrap
+- Deployment
+-Comments for blurbs / full crud on comments?
+-Java Auth

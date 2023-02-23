@@ -21,14 +21,27 @@
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-   <div>
-   		<form:form>
-   			<div>
-   				<%-- <form:label></form:label>
-   				<form:input></form:input>
-   				<form:error></form:error> --%>
+   <div class="container">
+		<nav class="navbar navbar-expand-xl navbar-light bg-light">
+			<h3>Edit blogTitle</h3>
+			<h1>BLURB BOX</h1>
+			<p><a href="/">Home</a></p>
+		</nav>
+   		<div class="row">
+   			<div class="row">
+   				<h3>blogTitle</h3>
    			</div>
-   		</form:form>
+   			<div class="col">
+		   		<form:form>
+		   			<div>
+		   				<%-- <form:label></form:label>
+		   				<form:textarea></form:textarea>
+		   				<form:error></form:error> --%>
+		   				<button class="btn btn-success">Edit Blurb!</button>
+		   			</div>
+		   		</form:form>
+   			</div>
+   		</div>
    </div>
 </body>
 </html>

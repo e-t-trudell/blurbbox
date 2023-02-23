@@ -26,10 +26,10 @@ public class UserController {
     @Autowired
     private UserValidator userValidator;
     
-//    @GetMapping("/")
-//    public String land() {
-//    	return"index.jsp";
-//    }
+    @GetMapping("/index")
+    public String land() {
+    	return"index.jsp";
+    }
     @GetMapping("/registration")
     public String registerForm(@Valid @ModelAttribute("user") User user) {
         return "registration.jsp";
@@ -43,9 +43,13 @@ public class UserController {
     	if (result.hasErrors()) {
             return "registration.jsp";
         }
-//        userServ.saveWithUserRole(user);
-    	userServ.saveUserWithAdminRole(user);
+        userServ.saveWithUserRole(user);
+//    	userServ.saveUserWithAdminRole(user);
         return "redirect:/login";
+    }
+    @GetMapping("/loginPage")
+    public String loginPage() {
+    	return"login.jsp";
     }
     @RequestMapping("/admin")
     public String adminPage(Principal principal, Model model) {
@@ -53,10 +57,14 @@ public class UserController {
         model.addAttribute("currentUser", userServ.findByUsername(username));
         return "adminPage.jsp";
     }
-//    @GetMapping("/login")
-//    public String login() {
-//        return "login.jsp";
-//    }
+
+//	On a login attempt, Spring Security will automatically call the loadUserByUsername(String) in UserDetailsServiceImplementation class. 
+//	From there, Spring Security will have two options:
+//	Successful Login: The user is authenticated, saves them in a context, and redirects to "/" (root route). More information on the context below.
+//	Unsuccessful Login: The client is redirected to "/login?error".
+//	It is important to note that the form must have a name field with the username value for Spring Security to correctly grab the information in the loadUserByUsername(String) method.
+    
+//   ERIC - log in current redirects to bootstrap error page on successful login
     @GetMapping("/login")
     public String login(@RequestParam(value="error", required=false) String error,
     		@RequestParam(value="logout", required=false) String logout,
@@ -69,12 +77,8 @@ public class UserController {
         }
         return "login.jsp";
     }
-//	On a login attempt, Spring Security will automatically call the loadUserByUsername(String) in UserDetailsServiceImplementation class. 
-//	From there, Spring Security will have two options:
-//	Successful Login: The user is authenticated, saves them in a context, and redirects to "/" (root route). More information on the context below.
-//	Unsuccessful Login: The client is redirected to "/login?error".
-//	It is important to note that the form must have a name field with the username value for Spring Security to correctly grab the information in the loadUserByUsername(String) method.
-    @RequestMapping(value = {"/", "/home"})
+
+    @GetMapping(value = {"/","/home"})
     public String home(Principal principal, Model model) {
         // 1
         String username = principal.getName();

@@ -22,8 +22,8 @@
 			<h3>Welcome <c:out value="${user.firstName}"/>!</h3>
 			<a href="/logout">Logout</a>
 		</div>
-		<div>
-			<a href="/addJob">Add A Job</a>
+		<div class="awayer">
+			<h3><a href="/addJob">Add A Job</a></h3>
 		</div>
 	</div>
 	

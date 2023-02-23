@@ -22,11 +22,11 @@
 		<div>
 			<h3>Edit Your Job Posting</h3>
 		</div>
-		<div>
-			<a href="/dashboard">Back</a>
+		<div class="helper2">
+			<h3><a href="/dashboard">Back</a></h3>
 			
 			
-			<a href="/logout">Logout</a>
+			<h3><a href="/logout">Logout</a></h3>
 		</div>
 	</div>
 	

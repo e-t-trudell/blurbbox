@@ -19,7 +19,7 @@
 }
 
 .awayer {
-	width: 250px;
+	width: 300px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -28,4 +28,11 @@
 .helper{
 	width: 100px;
 	margin: 20px;
+}
+
+.helper2{
+	width: 200px;
+	display: flex;
+	justify-content: space-between;
+
 }

@@ -21,14 +21,65 @@
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-   <div>
-   		<form:form>
-   			<%-- <div>
-   				<form:label></form:label>
-   				<form:input></form:input>
-   				<form:error></form:error>
-   			</div> --%>
-   		</form:form>
-   </div>
-</body>
+	
+	<div class="container h-100" style="margin-top:5%;">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Add A Blurb!</p>
+
+                <form:form class="mx-1 mx-md-4" method="post" action="/blurbs" modelAttribute="blurb">
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <form:input path="name" type="name" class="form-control" />
+                      <form:errors path="name" class="text-danger"/> 
+                      <form:label path="name" class="form-label">Name</form:label>
+                    </div>
+                  </div>
+                  
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <form:input path="category" type="number" class="form-control" />
+                      <form:errors path="category" class="text-danger"/>
+                      <form:label path="category" class="form-label">Category</form:label>
+                    </div>
+                  </div>
+                  
+                  <!-- Gotta figure out dropdown here -->
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <form:input path="content" type="description" class="form-control" />
+                      <form:errors path="content" class="text-danger"/>
+                      <form:label path="content" class="form-label">Content</form:label>
+                    </div>
+                  </div>
+                  
+                  <div class="form-row">
+					<form:errors path="user" class="error"/>
+					<form:input type="hidden" path="user" value="${user.id}" class="form-control"/>
+				  </div>
+
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <input class="input" type="submit" value="Submit"/>
+                  </div>
+
+                </form:form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="/home" class="btn btn-primary" style="margin-left:14%;margin-top:5px;">Back to dashboard</a>
+
 </html>

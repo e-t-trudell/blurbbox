@@ -27,11 +27,39 @@
         	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         	<input type="submit" value="Logout!" />
     	</form>
-    	<!-- new blog button -->
-    </div>
-    <div>
-    	<!-- blog posts on table: user name blog title, blog content edit and delete if logged user is creator-->
     	
+    	
+    	<a href="/addBlurb">Add a Blurb!</a>    	
+    	
+ <table class="table table-striped" style="width:95%;margin-left: auto;
+  margin-right: auto;">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Content</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+	<c:forEach var="blurb" items="${blurbs}">
+  
+    <tr>
+      <td><c:out value="${blurb.name}"/></td>
+      <td><c:out value="${blurb.category}"/></td>
+      <td><c:out value="${blurb.content}"/></td>
+      <td> <a href="/#">Edit</a> | <a href="/#">Delete</a></td>
+    </tr>
+
+	</c:forEach>    
+
+  </tbody>
+</table>
+
+
+    </div>
+    <div>    	
     </div>
 </body>
 </html>

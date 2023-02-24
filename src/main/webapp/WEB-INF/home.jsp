@@ -21,17 +21,74 @@
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div>
-   		<h1>Welcome Page <c:out value="${currentUser.username}"></c:out></h1>
-   		<form id="logoutForm" method="POST" action="/logout">
-        	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        	<input type="submit" value="Logout!" />
-    	</form>
-    	<!-- new blog button -->
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container">
+  
+  <div>
+  		Blurbbox |
+  </div>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarButtonsExample">
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/home">Dashboard</a>
+        </li>
+      </ul>
+      <!-- Left links -->
+
+      <div class="d-flex align-items-center">
+      <form action="/logout">
+        <button type="submit" class="btn btn-link px-3 me-2">
+          Logout
+        </button>
+      </form>
+      <form action="/addBlurb">
+        <button type="submit" class="btn btn-primary me-3">
+          Add Blurb
+        </button>
+        </form>
+      </div>
     </div>
-    <div>
-    	<!-- blog posts on table: user name blog title, blog content edit and delete if logged user is creator-->
+  </div>
+</nav>
+	<div>
+   		<h1 style="text-align:center;">Welcome <c:out value="${currentUser.username}"></c:out></h1>
     	
+    	
+ <table class="table table-striped" style="width:95%;margin-left: auto;
+  margin-right: auto;">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Content</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+	<c:forEach var="blurb" items="${blurbs}">
+  
+    <tr>
+      <td><c:out value="${blurb.name}"/></td>
+      <td><c:out value="${blurb.category}"/></td>
+      <td><c:out value="${blurb.content}"/></td>
+      <td> <a href="/#">Edit</a> | <a href="blurbs/delete/${blurb.id}">Delete</a></td>
+    </tr>
+
+	</c:forEach>    
+
+  </tbody>
+</table>
+
+
+    </div>
+    <div>    	
     </div>
 </body>
 </html>

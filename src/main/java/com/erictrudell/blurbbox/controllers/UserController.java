@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.erictrudell.blurbbox.models.User;
 import com.erictrudell.blurbbox.services.UserService;
 import com.erictrudell.blurbbox.validator.UserValidator;
-
+// comment
 @Controller
 public class UserController {
     @Autowired

@@ -21,14 +21,60 @@
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-   <div>
-   		<form:form>
-   			<div>
-   				<%-- <form:label></form:label>
-   				<form:input></form:input>
-   				<form:error></form:error> --%>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <!-- Container wrapper -->
+	  	<div class="container">
+	  
+		  <div>
+		  		Blurbbox |
+		  </div>
+	
+		    <!-- Collapsible wrapper -->
+	      <div class="collapse navbar-collapse" id="navbarButtonsExample">
+		      <!-- Left links -->
+		      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+		        <li class="nav-item">
+		          <a class="nav-link" href="/home">Dashboard</a>
+		        </li>
+		      </ul>
+	      <!-- Left links -->
+	      <div class="d-flex align-items-center">
+		      <form action="/logout">
+		        <button type="submit" class="btn btn-link px-3 me-2">
+		          Logout
+		        </button>
+		      </form>
+	      </div>
+	    </div>
+	  </div>
+	</nav>
+   <div class="container">
+   		<div class="row">
+   			<div class="row text-center">
+   				<h3><c:out value="${blurb.name}"/></h3>
    			</div>
-   		</form:form>
+   			<div class="col d-flex justify-content-center">
+		   		<form:form action="/blurb/${blurb.id}/edit" method="POST" modelAttribute="blurb">
+		   			<input type="hidden" name="_method" value="PUT">
+		   			<div>
+		   				<form:label path="name">Name</form:label>
+		   				<form:input path="name"/>
+		   				<form:errors path="name"></form:errors>
+		   			</div>
+		   			<div>
+		   				<form:label path="category">Category</form:label>
+		   				<form:input path="category"/>
+		   				<form:errors path="category"></form:errors>
+		   			</div>
+		   			<div>
+		   				<form:label path="content">Content</form:label>
+		   				<form:textarea path="content"></form:textarea>
+		   				<form:errors path="content"></form:errors>
+		   			</div>
+	   				<button class="btn btn-success">Edit Blurb!</button>
+		   		</form:form>
+   			</div>
+   		</div>
    </div>
 </body>
 </html>

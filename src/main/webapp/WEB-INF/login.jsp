@@ -25,25 +25,55 @@
    			<c:if test="${logoutMessage != null}">
         		<c:out value="${logoutMessage}"></c:out>
     		</c:if>
-    		<h1>Login</h1>
+
     		<c:if test="${errorMessage != null}">
         		<c:out value="${errorMessage}"></c:out>
     		</c:if>
-    		<form method="POST" action="/login">
-        		<p>
-            		<label for="username">Username</label>
-            		<input type="text" id="username" name="username"/>
-        		</p>
-        		<p>
-            		<label for="password">Password</label>
-            		<input type="password" id="password" name="password"/>
-        		</p>
-        		<div>
-        			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        		<!-- change me to a button -->
-        			<input type="submit" value="Login!"/>
-        		</div>
-    		</form>
+    		
+   <div class="container h-100" style="margin-top:5%;">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Log In</p>
+
+                <form:form class="mx-1 mx-md-4" method="post" action="/login" modelAttribute="newUser">
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <form:input path="username" type="text" class="form-control" />
+                      <form:label path="username" class="form-label">Username</form:label>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <form:input path="password" type="password"  class="form-control" />
+                      <form:label path="password" class="form-label" >Password</form:label>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <input class="input" type="submit" value="Submit"/>
+                  </div>
+
+                </form:form>
+                
+                 <a href="/registration" class="btn btn-primary" style="margin-left:38%;margin-top:5px;">Register!</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
    		</div>
 </body>
 </html>

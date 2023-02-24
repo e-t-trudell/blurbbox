@@ -49,7 +49,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <form:input path="passwordConfirmation" type="passwordConfirmation" id="form3Example4cd" class="form-control" />
+                      <form:input path="passwordConfirmation" type="password" id="form3Example4cd" class="form-control" />
                       <form:label path="passwordConfirmation" class="form-label" for="form3Example4cd">Confirm your password</form:label>
                     </div>
                   </div>

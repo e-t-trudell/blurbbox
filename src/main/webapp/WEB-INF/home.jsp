@@ -73,12 +73,12 @@
   <tbody>
   
 	<c:forEach var="blurb" items="${blurbs}">
-  
+
     <tr>
       <td><c:out value="${blurb.name}"/></td>
       <td><c:out value="${blurb.category}"/></td>
       <td><c:out value="${blurb.content}"/></td>
-      <td> <a href="/#">Edit</a> | <a href="blurbs/delete/${blurb.id}">Delete</a></td>
+      <td> <a href="/blurb/${blurb.id}/edit">Edit</a> | <a href="blurbs/delete/${blurb.id}">Delete</a></td>
     </tr>
 
 	</c:forEach>    

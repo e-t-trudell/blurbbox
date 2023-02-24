@@ -25,8 +25,10 @@ public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+    @Column(unique=true)
     @Size(min=3, message="Username must be greater than 3 characters")
     private String username;
+    
     @Size(min=5, message="Password must be greater than 5 characters")
 //    keyword operator from-rainbow=
     private String password;

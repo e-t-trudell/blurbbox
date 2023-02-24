@@ -14,10 +14,10 @@ Project Name: Blurbbox
 Project Description: A site designed to share thoughts and opinions on shows, movies, shorts, and more! A designated place to rant, rave, or contemplate with people from all across the globe!
 
 MVP Features: 
-- Create a blurb
+- Create a blurb- done
 - Edit existing blurbs 
 - View own/others blurbs
-- Delete own blurbs
+- Delete own blurbs - done
 
 
 

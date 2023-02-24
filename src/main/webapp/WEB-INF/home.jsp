@@ -73,7 +73,7 @@
   <tbody>
   
 	<c:forEach var="blurb" items="${blurbs}">
-  
+
     <tr>
       <td><c:out value="${blurb.name}"/></td>
       <td><c:out value="${blurb.category}"/></td>

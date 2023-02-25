@@ -21,13 +21,7 @@ import com.erictrudell.blurbbox.models.User;
 import com.erictrudell.blurbbox.services.BlurbService;
 import com.erictrudell.blurbbox.services.UserService;
 import com.erictrudell.blurbbox.validator.UserValidator;
-<<<<<<< HEAD
 
-
-// christians edit haha 
-=======
-// comment
->>>>>>> 308a2c03acbff0a03dda561ae16b93ad7b250162
 @Controller
 public class UserController {
     @Autowired

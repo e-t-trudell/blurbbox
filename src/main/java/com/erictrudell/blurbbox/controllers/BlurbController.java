@@ -21,6 +21,7 @@ import com.erictrudell.blurbbox.services.BlurbService;
 @RequestMapping("/blurb")
 public class BlurbController {
 	// Schwoop die whoop test comment lol
+	// another cool comment!
 	@Autowired
 	BlurbService blurbServ;
 	

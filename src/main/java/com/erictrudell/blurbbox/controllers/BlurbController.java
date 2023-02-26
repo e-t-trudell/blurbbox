@@ -34,10 +34,11 @@ public class BlurbController {
 	@Autowired
 	private UserRepository userRepo;
 	
-	@GetMapping("/create")
+//	Removed Corbett's blurb functions as they were combined here -ET
+	@GetMapping("/addBlurb")
 	public String getCreateView(Model model,
 			Principal principal) {
-		model.addAttribute("model", new Blurb());
+		model.addAttribute("blurb", new Blurb());
 		String username = principal.getName();
 		User user = userRepo.findByUsername(username);
 		model.addAttribute("user", user);
@@ -93,4 +94,6 @@ public class BlurbController {
 		blurbServ.deleteBlurb(blurb);
 		return "redirect:/home";
 	}
+
+	
 }

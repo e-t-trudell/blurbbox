@@ -16,6 +16,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -28,6 +30,11 @@ public class User {
     @Column(unique=true)
     @Size(min=3, message="Username must be greater than 3 characters")
     private String username;
+    
+    @Column(unique=true)
+//    @NotEmpty(message="Email is required!")
+    @Email(message="Please enter a valid email!")
+    private String email;
     
     @Size(min=5, message="Password must be greater than 5 characters")
 //    keyword operator from-rainbow=
@@ -58,7 +65,14 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-    public String getPassword() {
+    
+    public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
         return password;
     }
     public void setPassword(String password) {

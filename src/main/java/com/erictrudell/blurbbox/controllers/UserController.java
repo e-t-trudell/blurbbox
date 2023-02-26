@@ -109,37 +109,7 @@ public class UserController {
         return "home.jsp";
     }
     
-//	 TO ADD BLURBS / POST TO DB
-	 
-	 @GetMapping("/addBlurb")
-	 public String addBlurb(@ModelAttribute("blurb") Blurb blurb, Model model, Principal principal) {
-	 	
-	        String username = principal.getName();
-	        model.addAttribute("currentUser", userServ.findByUsername(username));
-	        
-	 	return "newBlurb.jsp";
-	 }
-	 
-	 @PostMapping("/blurbs")
-	 public String createBlurb(@Valid @ModelAttribute("blurb") Blurb blurb, BindingResult result) {
 
-	 	if (result.hasErrors()) {
-	 		return "newBlurb.jsp";
-	 	}
-	 	
-	 	blurbServ.create(blurb);
-	 	
-	 	return "redirect:/home";
-	 }
-	 
-//	  TO DELETE BLURBS
-	 
-	 @RequestMapping("/blurbs/delete/{id}")
-		public String deleteBlurb(@PathVariable("id") Long id) {
-			Blurb blurb = blurbServ.findBlurb(id);
-			blurbServ.deleteBlurb(blurb);
-			return "redirect:/home";
-		}
 //    The most basic object in Spring Security is the SecurityContextHolder. This is where Spring Security stores the details of the present security context of the application, such as the principal currently using the application. In our example, the principal is the current user logged in. But where is Spring Security storing all this information? 
 //    If you guessed in HttpSession, you are absolutely correct! Therefore, when using Spring Security, we should NOT access user information directly HttpSession, but instead, via the SecurityContextHolder.
 }

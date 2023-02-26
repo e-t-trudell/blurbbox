@@ -46,7 +46,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <form:input path="category" type="number" class="form-control" />
+                      <form:input path="category" class="form-control" />
                       <form:errors path="category" class="text-danger"/>
                       <form:label path="category" class="form-label">Category</form:label>
                     </div>
@@ -68,7 +68,7 @@
 				  </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <input class="input" type="submit" value="Submit"/>
+                    <button class="btn btn-success border border-3 border-info">Submit!</button>
                   </div>
 
                 </form:form>

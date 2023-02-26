@@ -49,7 +49,7 @@
           Logout
         </button>
       </form>
-      <form action="/addBlurb">
+      <form action="/blurb/addBlurb">
         <button type="submit" class="btn btn-primary me-3">
           Add Blurb
         </button>
@@ -68,14 +68,16 @@
     	</div>
     	
     	
- <table class="table table-striped" style="width:95%;margin-left: auto;
+ <table class="table table-striped table-info table-active table-hover" style="width:95%;margin-left: auto;
   margin-right: auto;">
   <thead>
     <tr>
+      <th scope="col">Creator</th>
       <th scope="col">Name</th>
       <th scope="col">Category</th>
       <th scope="col">Content</th>
       <th scope="col">Actions</th>
+      
     </tr>
   </thead>
   <tbody>
@@ -83,11 +85,11 @@
 	<c:forEach var="blurb" items="${blurbs}">
 
     <tr>
-    <!-- add link to one view here /blurb/{id}/view -->
-      <td><c:out value="${blurb.name}"/></td>
+      <td><c:out value="${blurb.user.username}"/></td>
+      <td><a href="/blurb/${blurb.id}/view"><c:out value="${blurb.name}"/></a></td>
       <td><c:out value="${blurb.category}"/></td>
       <td><c:out value="${blurb.content}"/></td>
-      <td> <a href="/blurb/${blurb.id}/edit">Edit</a> | <a href="blurbs/delete/${blurb.id}">Delete</a></td>
+      <td> <a href="/blurb/${blurb.id}/edit"><button class="btn btn-info border border-3 border-success col-sm-3">Edit</button></a> | <a href="blurbs/delete/${blurb.id}"><button class="btn btn-danger border border-3 border-warning col-sm-3">Delete</button></a></td>
     </tr>
 
 	</c:forEach>    

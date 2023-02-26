@@ -54,8 +54,12 @@
    				<h3><c:out value="${blurb.name}"/></h3>
    			</div>
    			<div class="col d-flex justify-content-center">
-		   		<form:form action="/blurb/${blurb.id}/edit" method="POST" modelAttribute="blurb">
-		   			<input type="hidden" name="_method" value="PUT">
+		   		<form:form action="/blurb/${blurb.id}/update" method="post" modelAttribute="blurb">
+		   			<div>
+		   				<input type="hidden" name="_method" value="PUT">
+		   				<form:input type="hidden" path="user" value="${user.id}" class="form-control"/>
+		   			</div>
+		   			
 		   			<div>
 		   				<form:label path="name">Name</form:label>
 		   				<form:input path="name"/>

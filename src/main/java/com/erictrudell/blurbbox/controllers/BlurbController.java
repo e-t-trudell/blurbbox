@@ -75,13 +75,15 @@ public class BlurbController {
 		return "editBlurb.jsp";
 	}
 	
-	@PutMapping("/{id}/edit")
-	public String updateBlurb(@Valid @ModelAttribute("blurb") Blurb blurb, BindingResult result, @PathVariable("id") Long blurbId) {
+	@PostMapping("/{id}/update")
+	public String updateBlurb(@Valid @ModelAttribute("blurb") Blurb blurb, 
+			BindingResult result, 
+			@PathVariable("id") Long blurbId) {
 		if(result.hasErrors()) {
 			return "editBlurb.jsp";
 		} else {
 			blurbServ.updateBlurb(blurb);
-			return "redirect:/{id}/view";
+			return "redirect:/blurb/{id}/view";
 		}
 	}
 	

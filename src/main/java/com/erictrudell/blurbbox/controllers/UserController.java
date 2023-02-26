@@ -32,7 +32,9 @@ public class UserController {
     private BlurbService blurbServ;
     
     @GetMapping("/index")
-    public String land() {
+    public String land(@Valid @ModelAttribute("user") User user,
+    		Model model) {
+    	model.addAttribute("newUser", new User());
     	return"index.jsp";
     }
     @GetMapping("/registration")

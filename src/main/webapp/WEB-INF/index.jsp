@@ -35,6 +35,11 @@
             		<form:errors path="username"></form:errors>
         		</div>
         		<div>
+            		<form:label path="email">Email:</form:label>
+            		<form:input path="email"/>
+            		<form:errors path="email"></form:errors>
+        		</div>
+        		<div>
             		<form:label path="password">Password:</form:label>
             		<form:password path="password"/>
             		<form:errors path="password"></form:errors>

@@ -64,7 +64,7 @@
                   
                   <div class="form-row">
 					<form:errors path="user" class="error"/>
-					<form:input type="hidden" path="user" value="${user.id}" class="form-control"/>
+					
 				  </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">

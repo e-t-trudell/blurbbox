@@ -83,6 +83,7 @@
 	<c:forEach var="blurb" items="${blurbs}">
 
     <tr>
+    <!-- add link to one view here /blurb/{id}/view -->
       <td><c:out value="${blurb.name}"/></td>
       <td><c:out value="${blurb.category}"/></td>
       <td><c:out value="${blurb.content}"/></td>

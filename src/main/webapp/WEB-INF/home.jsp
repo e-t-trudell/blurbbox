@@ -43,7 +43,8 @@
       <!-- Left links -->
 
       <div class="d-flex align-items-center">
-      <form action="/logout">
+      <form action="/logout" method="post">
+      	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button type="submit" class="btn btn-link px-3 me-2">
           Logout
         </button>

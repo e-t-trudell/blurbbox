@@ -32,7 +32,7 @@
 
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Add A Blurb!</p>
 
-                <form:form class="mx-1 mx-md-4" method="post" action="/blurbs" modelAttribute="blurb">
+                <form:form class="mx-1 mx-md-4" method="post" action="/blurb/create" modelAttribute="blurb">
 
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.erictrudell.blurbbox.models.Blurb;
 import com.erictrudell.blurbbox.models.User;
+import com.erictrudell.blurbbox.repositories.UserRepository;
 import com.erictrudell.blurbbox.services.BlurbService;
 import com.erictrudell.blurbbox.services.UserService;
 
@@ -30,17 +31,24 @@ public class BlurbController {
 	private BlurbService blurbServ;
 	@Autowired
 	private UserService userServ;
+	@Autowired
+	private UserRepository userRepo;
 	
 	@GetMapping("/create")
-	public String getCreateView(Model model) {
+	public String getCreateView(Model model,
+			Principal principal) {
 		model.addAttribute("model", new Blurb());
+		String username = principal.getName();
+		User user = userRepo.findByUsername(username);
+		model.addAttribute("user", user);
 		return "newBlurb.jsp";
 	}
 	
 	@PostMapping("/create")
 	public String createNewBlurb(@Valid @ModelAttribute("blurb") Blurb blurb,
 			BindingResult result,
-			Principal principal) {
+			Principal principal,
+			Model model) {
 		if(result.hasErrors()) {
 			return "newBlurb.jsp";
 		} else {
@@ -48,7 +56,9 @@ public class BlurbController {
 	    	User userOne = userServ.findByUsername(username);
 	    	Long userId = userOne.getId();
 	    	blurb.setUser(userOne);
+	    	
 			blurbServ.create(blurb);
+			System.out.println("Blurb created");
 			return "redirect:/home";
 		}
 	}

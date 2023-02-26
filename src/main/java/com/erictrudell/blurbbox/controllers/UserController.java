@@ -43,11 +43,13 @@ public class UserController {
     public String registration(@Valid @ModelAttribute("user") User user,
     		BindingResult result,
     		Model model, 
-    		HttpSession session) {
+    		HttpSession session,
+    		Principal principal) {
     	userValidator.validate(user, result);
     	if (result.hasErrors()) {
             return "registration.jsp";
         }
+    	
         userServ.saveWithUserRole(user);
 //    	userServ.saveUserWithAdminRole(user);
         return "redirect:/login";
@@ -83,11 +85,23 @@ public class UserController {
         model.addAttribute("newUser", new User());
         return "login.jsp";
     }
-
+    @GetMapping("/logout")
+    public String logout(@RequestParam(value="logout", required=false) String logout,
+    		Model model) {
+    	if(logout != null) {
+            model.addAttribute("logoutMessage", "Logout Successful!");
+        }
+        model.addAttribute("newUser", new User());
+    	
+    	return "redirect;/login";
+    }
     @GetMapping(value = {"/","/home"})
     public String home(Principal principal, Model model) {
         // 1
         String username = principal.getName();
+//        String username = principal.getName();
+//    	User userOne = userServ.findByUsername(username);
+//    	Long userId = userOne.getId();
         model.addAttribute("blurbs", blurbServ.all());
         model.addAttribute("currentUser", userServ.findByUsername(username));
         return "home.jsp";

@@ -9,6 +9,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!-- for rendering errors on PUT routes -->
 <%@ page isErrorPage="true" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +43,8 @@
       <!-- Left links -->
 
       <div class="d-flex align-items-center">
-      <form action="/logout">
+      <form action="/logout" method="post">
+      	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button type="submit" class="btn btn-link px-3 me-2">
           Logout
         </button>
@@ -58,6 +60,12 @@
 </nav>
 	<div>
    		<h1 style="text-align:center;">Welcome <c:out value="${currentUser.username}"></c:out></h1>
+    	
+    	<div style="text-align:center;">
+    		<sec:authorize access="hasRole('ROLE_USER')">
+    			Secure welcome <sec:authentication property="name"/><sec:authentication property="principal.authorities"/>
+			</sec:authorize>
+    	</div>
     	
     	
  <table class="table table-striped" style="width:95%;margin-left: auto;

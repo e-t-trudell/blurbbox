@@ -1,5 +1,6 @@
 package com.erictrudell.blurbbox.services;
 
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +22,11 @@ public class UserService {
     }
     
     
+    
+//    Need to secure user id here to add to user register
     // 1
     public void saveWithUserRole(User user) {
+    	
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRoles(roleRepository.findByName("ROLE_USER"));
         userRepository.save(user);

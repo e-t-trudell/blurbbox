@@ -1,5 +1,7 @@
 package com.erictrudell.blurbbox.controllers;
 
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.erictrudell.blurbbox.models.Blurb;
+import com.erictrudell.blurbbox.models.User;
+import com.erictrudell.blurbbox.repositories.UserRepository;
 import com.erictrudell.blurbbox.services.BlurbService;
+import com.erictrudell.blurbbox.services.UserService;
 
 @Controller
 @RequestMapping("/blurb")
@@ -23,20 +28,37 @@ public class BlurbController {
 	// Schwoop die whoop test comment lol
 	// another cool comment!
 	@Autowired
-	BlurbService blurbServ;
+	private BlurbService blurbServ;
+	@Autowired
+	private UserService userServ;
+	@Autowired
+	private UserRepository userRepo;
 	
 	@GetMapping("/create")
-	public String getCreateView(Model model) {
+	public String getCreateView(Model model,
+			Principal principal) {
 		model.addAttribute("model", new Blurb());
+		String username = principal.getName();
+		User user = userRepo.findByUsername(username);
+		model.addAttribute("user", user);
 		return "newBlurb.jsp";
 	}
 	
 	@PostMapping("/create")
-	public String createNewBlurb(@Valid @ModelAttribute("blurb") Blurb blurb, BindingResult result) {
+	public String createNewBlurb(@Valid @ModelAttribute("blurb") Blurb blurb,
+			BindingResult result,
+			Principal principal,
+			Model model) {
 		if(result.hasErrors()) {
 			return "newBlurb.jsp";
 		} else {
+			String username = principal.getName();
+	    	User userOne = userServ.findByUsername(username);
+	    	Long userId = userOne.getId();
+	    	blurb.setUser(userOne);
+	    	
 			blurbServ.create(blurb);
+			System.out.println("Blurb created");
 			return "redirect:/home";
 		}
 	}

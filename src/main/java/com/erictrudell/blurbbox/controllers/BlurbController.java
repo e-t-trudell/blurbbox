@@ -88,7 +88,7 @@ public class BlurbController {
 		}
 	}
 	
-	@DeleteMapping("/{id}/delete")
+	@GetMapping("/{id}/delete")
 	public String deleteBlurb(@PathVariable("id") Long blurbId) {
 		Blurb blurb = blurbServ.findBlurb(blurbId);
 		blurbServ.deleteBlurb(blurb);

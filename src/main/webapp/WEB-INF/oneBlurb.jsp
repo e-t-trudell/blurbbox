@@ -59,7 +59,7 @@
     	<p>Category: <c:out value="${blurb.category}"/></p>
     	<p>Content: <c:out value="${blurb.content}"/></p>
     	<div class="container d-flex flex-row justify-content-between">
-    		<a href="/blurb/${blurb.id}/edit"><button class="btn btn-info border border-3 border-success col-sm">Edit</button></a> | <a href="blurbs/delete/${blurb.id}"><button class="btn btn-danger border border-3 border-warning col-sm">Delete</button></a>
+    		<a href="/blurb/${blurb.id}/edit"><button class="btn btn-info border border-3 border-success col-sm">Edit</button></a> | <a href="/blurb/${blurb.id}/delete"><button class="btn btn-danger border border-3 border-warning col-sm">Delete</button></a>
     	</div>
     </div>
    

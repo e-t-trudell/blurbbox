@@ -89,7 +89,7 @@
       <td><a href="/blurb/${blurb.id}/view"><c:out value="${blurb.name}"/></a></td>
       <td><c:out value="${blurb.category}"/></td>
       <td><c:out value="${blurb.content}"/></td>
-      <td> <a href="/blurb/${blurb.id}/edit"><button class="btn btn-info border border-3 border-success col-sm-3">Edit</button></a> | <a href="blurbs/delete/${blurb.id}"><button class="btn btn-danger border border-3 border-warning col-sm-3">Delete</button></a></td>
+      <td> <a href="/blurb/${blurb.id}/edit"><button class="btn btn-info border border-3 border-success col-sm-3">Edit</button></a> | <a href="blurb/${blurb.id}/delete"><button class="btn btn-danger border border-3 border-warning col-sm-3">Delete</button></a></td>
     </tr>
 
 	</c:forEach>    

@@ -101,7 +101,6 @@ public class UserController {
     public String home(Principal principal, Model model) {
         // 1
         String username = principal.getName();
-//        String username = principal.getName();
 //    	User userOne = userServ.findByUsername(username);
 //    	Long userId = userOne.getId();
         model.addAttribute("blurbs", blurbServ.all());

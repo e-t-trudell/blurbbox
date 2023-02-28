@@ -47,3 +47,11 @@ Extra!!!
         -on blurb
     -dislikes
         -on blurb
+
+
+Terminal Cmmds:
+- git add *
+- git status (to check)
+- git commit
+- git push https://github.com/e-t-trudell/blurbbox.git HEAD:dev-branch
+- check on github for -m

@@ -32,6 +32,12 @@ public class Blurb {
 	@NotBlank(message="Content required")
     private String content;
     
+//	Javascript file > static>javascript onclick increases likes by 1
+//	private Integer likes = 0;
+	
+//	OnetoMany
+//	private List<User> likes;
+	
     @Column(updatable=false)
     private Date createdAt;
     private Date updatedAt;

@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" media="all">
     
     <link rel="stylesheet" href="/css/main.css"> <!-- change to match your file/naming structure -->
     <script src="/webjars/jquery/jquery.min.js"></script>
@@ -24,7 +24,8 @@
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!--  FIX NAV BAR ON ALL PAGES FOR SM SIZE-->
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
   <!-- Container wrapper -->
   <div class="container">
   
@@ -41,7 +42,9 @@
         </li>
       </ul>
       <!-- Left links -->
-
+		<div>
+			<a href="/registration" class="btn btn-primary" >Register!</a>
+		</div>
       <div class="d-flex align-items-center">
       <form action="/logout" method="post">
       	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

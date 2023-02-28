@@ -30,7 +30,7 @@ public class WebSecurityConfig {
 		
 		http.
 	         authorizeRequests()
-	             .antMatchers("/css/**", "/js/**", "/registration").permitAll()
+	             .antMatchers("/css/**", "/js/**", "/webjars/**", "/registration").permitAll()
 	             .anyRequest().authenticated()
 	             .and()
 	         .formLogin()
@@ -52,7 +52,7 @@ public class WebSecurityConfig {
 		
 		http.
 	        authorizeRequests()
-	            .antMatchers("/css/**", "/js/**", "/registration").permitAll()
+	            .antMatchers("/css/**", "/js/**","/webjars/**", "/registration").permitAll()
 	            .antMatchers("/admin/**").access("hasRole('ADMIN')")    // NEW
 	            .anyRequest().authenticated()
 	            .and()

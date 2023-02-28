@@ -32,6 +32,7 @@ public class User {
     private String username;
     
     @Column(unique=true)
+//    , message="Email is taken already"
 //    @NotEmpty(message="Email is required!")
     @Email(message="Please enter a valid email!")
     private String email;

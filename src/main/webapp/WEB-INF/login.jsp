@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"  media="all">
     
     <link rel="stylesheet" href="/css/main.css"> <!-- change to match your file/naming structure -->
     <script src="/webjars/jquery/jquery.min.js"></script>
@@ -77,5 +77,6 @@
   </div>
   
    		</div>
+   		
 </body>
 </html>

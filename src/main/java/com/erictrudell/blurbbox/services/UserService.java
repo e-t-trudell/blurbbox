@@ -27,6 +27,7 @@ public class UserService {
     // 1
     public void saveWithUserRole(User user) {
     	
+//    	Statement stn= "SQL query"
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRoles(roleRepository.findByName("ROLE_USER"));
         userRepository.save(user);

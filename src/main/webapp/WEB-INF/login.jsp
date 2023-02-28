@@ -9,6 +9,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!-- for rendering errors on PUT routes -->
 <%@ page isErrorPage="true" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="/css/main.css"> <!-- change to match your file/naming structure -->
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    
 </head>
 <body>
    <div>

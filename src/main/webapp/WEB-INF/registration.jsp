@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/css/login.css">
 <body>
     
-    <p><form:errors path="user.*"/></p>
+    <%-- <p><form:errors path="user.*"/></p> --%>
     
   <div class="container h-100" style="margin-top:5%;">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -33,32 +33,40 @@
                  <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
+                      <form:errors path="username" class="text-danger"/>
                       <form:input path="username" type="text" id="username" class="form-control" />
                       <form:label path="username" class="form-label" for="username">User Name</form:label>
+                      
                     </div>
                   </div>
                   
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
+                      <form:errors path="email" class="text-danger"/>
                       <form:input path="email" type="text" id="email" class="form-control" />
                       <form:label path="email" class="form-label" for="email">Email</form:label>
+                      
                     </div>
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
+                      <form:errors path="password" class="text-danger"/>
                       <form:input path="password" type="password" class="form-control" />
                       <form:label path="password" class="form-label">Password</form:label>
+                      
                     </div>
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
+                      <form:errors path="passwordConfirmation" class="text-danger"/>
                       <form:input path="passwordConfirmation" type="password" id="form3Example4cd" class="form-control" />
                       <form:label path="passwordConfirmation" class="form-label" for="form3Example4cd">Confirm your password</form:label>
+                      
                     </div>
                   </div>
 

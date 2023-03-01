@@ -83,6 +83,7 @@
       <th scope="col">Name</th>
       <th scope="col">Category</th>
       <th scope="col">Content</th>
+      <th scope="col" >Likes</th>
       <th scope="col">Actions</th>
       
     </tr>
@@ -96,7 +97,7 @@
       <td><c:out value="${blurb.name}"/></td>
       <td><a href="/category/${blurb.categoryType.id}/view"><c:out value="${blurb.categoryType.title}"/></a></td>
       <td><c:out value="${blurb.content}"/></td>
-      
+      <td class="text-warning "><c:out value="${blurb.likes}"/></td>
       <td> 
       
    	  	<c:if test = "${currentUser.id == blurb.user.id}">

@@ -44,7 +44,7 @@
 
                 <form:form class="mx-1 mx-md-4" method="post" action="/login" modelAttribute="newUser">
 
-                  <div class="d-flex flex-row align-items-center mb-4">
+                  <div class="d-flex flex-row align-items-center mb-4 ">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                       <form:input path="username" type="text" class="form-control" />
@@ -52,7 +52,7 @@
                     </div>
                   </div>
 
-                  <div class="d-flex flex-row align-items-center mb-4">
+                  <div class="d-flex flex-row align-items-center mb-4 ">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                       <form:input path="password" type="password"  class="form-control" />
@@ -60,13 +60,15 @@
                     </div>
                   </div>
 
-                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <input class="input" type="submit" value="Submit"/>
+                  <div class="container d-flex flex-column align-items-center justify-content-center mx-4 mb-3 mb-lg-4">
+                    <!-- <input class="input" type="submit" value="Submit"/> -->
+                    <button class="btn btn-success border border-3 border-warning border-rounded col-sm-8 mb-3"> Submit!</button>
+                  	<a href="/registration" class="btn btn-primary col-sm-8 border border-3 border-info border-rounded">Register Instead!</a>
                   </div>
 
                 </form:form>
                 
-                 <a href="/registration" class="btn btn-primary" style="margin-left:38%;margin-top:5px;">Register!</a>
+                 
 
               </div>
             </div>

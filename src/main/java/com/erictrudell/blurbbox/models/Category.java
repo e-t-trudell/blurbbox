@@ -23,7 +23,7 @@ public class Category {
 	@NotBlank(message="Title required")
     private String title;
 	
-	@OneToMany(mappedBy="blurb", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="categoryType", fetch = FetchType.LAZY)
     private List<Blurb> blurbs;
 	
 	

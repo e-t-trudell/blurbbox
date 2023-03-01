@@ -16,16 +16,21 @@ public class CategoryService {
 	private CategoryRepository repo;
 	
 	public Category findById(Long id) {
-		
 		Optional<Category> result = repo.findById(id);
 		if(result.isPresent()) {
 			return result.get();
 		}
-		
 		return null;
 	}
-	
-
+//	@Bito this is a duplicate do we need?
+//	public Category findCategory(Long id) {
+//        Optional<Category> optionalCategory = repo.findById(id);
+//        if(optionalCategory.isPresent()) {
+//            return optionalCategory.get();
+//        } else {
+//            return null;
+//	        }
+//    }
 	public List<Category> all() {
 		return repo.findAll();
 	}
@@ -34,20 +39,13 @@ public class CategoryService {
 		return repo.save(category);
 	}
 	
-	public Category updateBlurb(Category category) {
+	public Category updateCategory(Category category) {
 		return repo.save(category);
 	}
 	
-	public Category findCategory(Long id) {
-        Optional<Category> optionalCategory = repo.findById(id);
-        if(optionalCategory.isPresent()) {
-            return optionalCategory.get();
-        } else {
-            return null;
-	        }
-    }
 	
-	public void deleteCategory(Category category) {
+	
+	public void deleteCat(Category category) {
 		repo.delete(category);
 }
 }

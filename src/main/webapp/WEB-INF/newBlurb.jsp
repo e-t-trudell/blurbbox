@@ -43,15 +43,30 @@
                     </div>
                   </div>
                   
-                  <div class="d-flex flex-row align-items-center mb-4">
+                  <%-- <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                       <form:input path="category" class="form-control" />
                       <form:errors path="category" class="text-danger"/>
                       <form:label path="category" class="form-label">Category</form:label>
                     </div>
-                  </div>
-                  
+                  </div> --%>
+                  <div class="d-flex flex-row align-items-center mb-4">
+   					<i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+   						<form:select path="categoryType" class="form-select form-outline flex-fill mb-0">
+   							<c:forEach var="category" items="${category}">
+   								<div>
+   									<%-- <c:if test="${userId.id == shop.user.id}"> --%>
+   										<form:option value="${category.id}" path="categoryType">
+   											<c:out value="${category.title}"/>
+   										</form:option>
+   									<%-- </c:if> --%>
+   								</div>
+   							</c:forEach>
+   						</form:select>
+   						<form:label path="categoryType" class="form-label">Category</form:label>
+   						<form:errors path="categoryType"></form:errors>
+   				  </div> 
                   <!-- Gotta figure out dropdown here -->
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>

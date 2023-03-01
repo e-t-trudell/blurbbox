@@ -36,28 +36,32 @@
     <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarButtonsExample">
       <!-- Left links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="/home">Dashboard</a>
-        </li>
-      </ul>
+      	<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        	<li class="nav-item">
+         		<a class="nav-link" href="/home">Dashboard</a>
+        	</li>
+      	</ul>
       <!-- Left links -->
-		<div>
-			<a href="/registration" class="btn btn-primary" >Register!</a>
-		</div>
-      <div class="d-flex align-items-center">
-      <form action="/logout" method="post">
-      	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <button type="submit" class="btn btn-link px-3 me-2">
-          Logout
-        </button>
-      </form>
-      <form action="/blurb/addBlurb">
-        <button type="submit" class="btn btn-primary me-3">
-          Add Blurb
-        </button>
-        </form>
-      </div>
+		
+      	<div class="d-flex align-items-center">
+      		<div>
+				<a href="/registration" class="btn btn-success m-2" >Register!</a>
+			</div>
+      		<form action="/logout" method="post">
+      			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+       	 		<button type="submit" class="btn btn-danger m-2">
+          		Logout
+        		</button>
+      		</form>
+      		<form action="/blurb/addBlurb">
+        		<button type="submit" class="btn btn-primary m-2">
+         	 	Add Blurb
+        		</button>
+        	</form>
+        	<div>
+        		<a href="/category/addCategory"><button class="btn btn-primary m-2">New Category</button></a>
+        	</div>
+      	</div>
     </div>
   </div>
 </nav>
@@ -90,7 +94,7 @@
     <tr>
       <td><c:out value="${blurb.user.username}"/></td>
       <td><c:out value="${blurb.name}"/></td>
-      <td><c:out value="${blurb.category}"/></td>
+      <td><a href="/category/${blurb.categoryType.id}/view"><c:out value="${blurb.categoryType.title}"/></a></td>
       <td><c:out value="${blurb.content}"/></td>
       
       <td> 

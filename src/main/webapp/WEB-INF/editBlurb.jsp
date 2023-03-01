@@ -62,17 +62,29 @@
 		   			
 		   			<div class="d-flex flex-row justify-content-between flex-fill p-2 mb-2 bg-light border border-3 border-succcess border-rounded">
 		   				<form:label path="name" class="col-sm-2">Name</form:label>
-		   				<form:input path="name" class="col-sm-8 border border-2 border-info text-end"/>
+		   				<form:input path="name" class="col-sm-8 border border-2 border-info text-end" value="${blurb.name}"/>
 		   				<form:errors path="name" class="text-danger"></form:errors>
 		   			</div>
-		   			<div class="d-flex flex-row justify-content-between flex-fill p-2 mb-2 bg-light border border-3 border-primary border-rounded">
-		   				<form:label path="category" class="col-sm-2">Category</form:label>
-		   				<form:input path="category" class="col-sm-8 border border-2 border-info text-end"/>
-		   				<form:errors path="category" class="text-danger"></form:errors>
-		   			</div>
+		   			<div class="d-flex flex-row align-items-center mb-4">
+   					<i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+   						<form:select path="categoryType" class="form-select form-outline flex-fill mb-0" >
+   							<c:forEach var="category" items="${category}">
+   								<div>
+   									<%-- <c:if test="${userId.id == shop.user.id}"> --%>
+   										<form:option value="${category.id}" path="categoryType">
+   											<c:out value="${category.title}"/>
+   											<!-- value="${blurb.categoryType.title}" -->
+   										</form:option>
+   									<%-- </c:if> --%>
+   								</div>
+   							</c:forEach>
+   						</form:select>
+   						<form:label path="categoryType" class="form-label">Category</form:label>
+   						<form:errors path="categoryType"></form:errors>
+   				  </div> 
 		   			<div class="d-flex flex-row justify-content-between flex-fill p-2 mb-2 bg-light border border-3 border-info border-rounded">
 		   				<form:label path="content" class="col-sm-2">Content</form:label>
-		   				<form:textarea path="content" class="col-sm-8 border border-2 border-info text-end"></form:textarea>
+		   				<form:textarea path="content" class="col-sm-8 border border-2 border-info text-end" value="${blurb.content}"></form:textarea>
 		   				<form:errors path="content" class="text-danger"></form:errors>
 		   			</div>
 		   			<div class="container d-flex justify-content-center">

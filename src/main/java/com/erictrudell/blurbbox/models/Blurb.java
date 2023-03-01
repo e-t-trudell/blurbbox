@@ -26,8 +26,8 @@ public class Blurb {
 	@NotBlank(message="Name required")
     private String name;
 
-	@NotBlank(message="Category required")
-    private String category;
+//	@NotBlank(message="Category required")
+//    private String category;
 	
 	@NotBlank(message="Content required")
     private String content;
@@ -75,14 +75,14 @@ public class Blurb {
 		this.name = name;
 	}
 
-	public String getCategory() {
-		return category;
-	}
+	
 
-	public void setCategory(String category) {
-		this.category = category;
+	public Category getCategoryType() {
+		return categoryType;
 	}
-
+	public void setCategoryType(Category categoryType) {
+		this.categoryType = categoryType;
+	}
 	public String getContent() {
 		return content;
 	}

@@ -63,7 +63,8 @@
                   </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <input class="input" type="submit" value="Submit"/>
+                    <!-- <input class="input" type="submit" value="Submit"/> -->
+                    <button class="btn btn-success border border-3 border-warning border-rounded col-sm-10"> Submit!</button>
                   </div>
 
                 </form:form>

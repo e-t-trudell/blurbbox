@@ -47,6 +47,8 @@ public class BlurbController {
 		return "newBlurb.jsp";
 	}
 	
+	
+	
 	@PostMapping("/create")
 	public String createNewBlurb(@Valid @ModelAttribute("blurb") Blurb blurb,
 			BindingResult result,
@@ -69,9 +71,47 @@ public class BlurbController {
 	}
 	
 	@GetMapping("/{id}/view")
-	public String viewOne(@PathVariable("id") Long blurbId, Model model) {
+	public String viewOne(@PathVariable("id") Long blurbId,
+			Model model,
+			Principal principal) {
 		model.addAttribute("blurb", blurbServ.findBlurb(blurbId));
+		String username = principal.getName();
+		model.addAttribute("currentUser", userServ.findByUsername(username));
 		return "oneBlurb.jsp";
+	}
+	@PostMapping("/{id}/addLike")
+	public String addLike(@ModelAttribute("blurb") Blurb blurb,
+			BindingResult result, 
+			@PathVariable("id") Long blurbId) {
+		if(result.hasErrors()) {
+			return "oneBlurb.jsp";
+		}else {
+			Integer count = blurb.getLikes();
+			System.out.println(count);
+			Integer newCount = count+1;
+			System.out.println(newCount);
+		
+			blurb.setLikes(newCount);
+			blurbServ.updateBlurb(blurb);
+		}
+		return "redirect:/blurb/{id}/view";
+	}
+	@PostMapping("/{id}/removeLike")
+	public String removeLike(@ModelAttribute("blurb") Blurb blurb,
+			BindingResult result, 
+			@PathVariable("id") Long blurbId) {
+		if(result.hasErrors()) {
+			return "oneBlurb.jsp";
+		}else {
+			Integer count = blurb.getLikes();
+			System.out.println(count);
+			Integer newCount = count-1;
+			System.out.println(newCount);
+		
+			blurb.setLikes(newCount);
+			blurbServ.updateBlurb(blurb);
+		}
+		return "redirect:/blurb/{id}/view";
 	}
 	
 	@GetMapping("/{id}/edit")

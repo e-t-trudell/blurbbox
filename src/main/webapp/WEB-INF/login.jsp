@@ -24,13 +24,7 @@
 </head>
 <body>
    <div>
-   			<c:if test="${logoutMessage != null}">
-        		<c:out value="${logoutMessage}"></c:out>
-    		</c:if>
-
-    		<c:if test="${errorMessage != null}">
-        		<c:out value="${errorMessage}"></c:out>
-    		</c:if>
+   			
     		
    <div class="container h-100" style="margin-top:5%;">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -39,8 +33,18 @@
           <div class="card-body p-md-5">
             <div class="row justify-content-center">
               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+				<div>
+					 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Log In</p>
+					<c:if test="${logoutMessage != null}">
+        				<p class="text-success"><c:out value="${logoutMessage}" ></c:out></p>
+    				</c:if>
 
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Log In</p>
+    				<c:if test="${errorMessage != null}">
+        				<p class="text-danger"><c:out value="${errorMessage}" ></c:out></p>
+    				</c:if>
+				</div>
+               
+                
 
                 <form:form class="mx-1 mx-md-4" method="post" action="/login" modelAttribute="newUser">
 

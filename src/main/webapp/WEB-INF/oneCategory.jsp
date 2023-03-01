@@ -54,11 +54,12 @@
     	</div>
     </nav>
     <div class="container border border-3 border-rounded border-success col-sm-6 offset-sm-3 d-flex flex-column justify-content-center align-items-center p-4">
-    	<h3>Title: <c:out value="${category.title}"/></h3>
+    	<h3>Category Title: <c:out value="${category.title}"/></h3>
     	<%-- <c:forEach var="category" items="${allCategories}"> --%>
     		
     		<c:forEach var="blurb" items="${blurbs}">
     			<c:if test="${category.id == blurb.categoryType.id}">
+    				<p>Blurbs in this category:</p>
     				<ul>
     					<li><a href="/blurb/${blurb.id}/view"><c:out value="${blurb.name}"></c:out></a></li>
     				</ul>

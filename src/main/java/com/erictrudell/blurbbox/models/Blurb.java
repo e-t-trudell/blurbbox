@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -26,22 +27,11 @@ public class Blurb {
 	@NotBlank(message="Name required")
     private String name;
 
-//	@NotBlank(message="Category required")
-//    private String category;
-	
 	@NotBlank(message="Content required")
     private String content;
-    
-//	Javascript file > static>javascript onclick increases likes by 1
-//	private Integer likes = 0;
-	
-//	OnetoMany
-//	private List<User> likes;
-	
-    @Column(updatable=false)
-    private Date createdAt;
-    private Date updatedAt;
-    
+
+	private Integer likes = 0;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;
@@ -49,7 +39,13 @@ public class Blurb {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="category_id")
     private Category categoryType;
-	
+    
+    
+    
+    @Column(updatable=false)
+    private Date createdAt;
+    private Date updatedAt;
+    
     @PrePersist
     protected void onCreate(){
         this.createdAt = new Date();
@@ -90,7 +86,15 @@ public class Blurb {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
+	
+	
+	
+	public Integer getLikes() {
+		return likes;
+	}
+	public void setLikes(Integer likes) {
+		this.likes = likes;
+	}
 	public Date getCreatedAt() {
 		return createdAt;
 	}

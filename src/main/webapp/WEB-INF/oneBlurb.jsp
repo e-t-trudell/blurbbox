@@ -46,7 +46,7 @@
       				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         			<button type="submit" class="btn btn-link px-3 me-2">Logout</button>
       			</form>
-      			<form action="/addBlurb">
+      			<form action="/blurb/addBlurb">
         			<button type="submit" class="btn btn-primary me-3">Add Blurb</button>
         		</form>
       		</div>
@@ -56,8 +56,41 @@
     	<h3>Name: <c:out value="${blurb.name}"/></h3>
     	<p>Created by: <c:out value="${blurb.user.username}"/></p>
     	<!-- add link to category here -->
-    	<p>Category: <c:out value="${blurb.category}"/></p>
+    	<p>Category: <c:out value="${blurb.categoryType.title}"/></p>
     	<p>Content: <c:out value="${blurb.content}"/></p>
+    	
+    	<div class="container d-flex justify-content-center ">
+    		<p class="m-2">Likes: <c:out value="${blurb.likes}"/></p>
+    		<c:if test="${blurb.user.id != currentUser.id}">
+    			<form:form action="/blurb/${blurb.id}/addLike" method="post" modelAttribute="blurb" class="m-2">
+    				<div >
+    					<form:input type="hidden" path="id" value="${blurb.id}" class="form-control"/>
+    					<form:input type="hidden" path="name" value="${blurb.name}" class="form-control"/>
+    					<form:input type="hidden" path="content" value="${blurb.content}" class="form-control"/>
+    					<form:input type="hidden" path="user" value="${blurb.user.id}" class="form-control"/>
+    					<form:input type="hidden" path="categoryType" value="${blurb.categoryType.id}" class="form-control"/>
+    					<form:input type="hidden" path="likes" value="${blurb.likes}" class="form-control"/>
+    				</div>
+    				<div>
+    					<button class="btn btn-success">(+)</button>
+    				</div>
+    			</form:form>
+    			
+    			<form:form action="/blurb/${blurb.id}/removeLike" method="post" modelAttribute="blurb" class="m-2">
+    				<div>
+    					<form:input type="hidden" path="id" value="${blurb.id}" class="form-control"/>
+    					<form:input type="hidden" path="name" value="${blurb.name}" class="form-control"/>
+    					<form:input type="hidden" path="content" value="${blurb.content}" class="form-control"/>
+    					<form:input type="hidden" path="user" value="${blurb.user.id}" class="form-control"/>
+    					<form:input type="hidden" path="categoryType" value="${blurb.categoryType.id}" class="form-control"/>
+    					<form:input type="hidden" path="likes" value="${blurb.likes}" class="form-control"/>
+    				</div>
+    				<div>
+    					<button class="btn btn-danger">(-)</button>
+    				</div>
+    			</form:form>
+    		</c:if>
+    	</div>
     	<div class="container d-flex flex-row justify-content-between">
     		<a href="/blurb/${blurb.id}/edit"><button class="btn btn-info border border-3 border-success col-sm">Edit</button></a> | <a href="/blurb/${blurb.id}/delete"><button class="btn btn-danger border border-3 border-warning col-sm">Delete</button></a>
     	</div>

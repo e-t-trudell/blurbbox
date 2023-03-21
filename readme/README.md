@@ -5,6 +5,20 @@ Spring MVC, full CRUD functionality, conditional rendering, Spring Security.
 
 Included below are snapshots of each page of the application
 
+Registration:
+![](register.png)
 Login:
-blurbbox login.png
-${currentImageWithoutExt}
+![](login.png)
+
+Home:
+![](home.png)
+Create Blurb:
+![](addBlurb.png)
+Edit Blurb:
+![](editBlurb.png)
+Create Category:
+![](newCategory.png)
+View Catefory:
+![](viewCategory.png)
+
+

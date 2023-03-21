@@ -93,7 +93,7 @@
     	</div>
     	<div class="container d-flex flex-row justify-content-between">
     		<c:if test = "${currentUser.id == blurb.user.id}">
-    		<a href="/blurb/${blurb.id}/edit"><button class="btn btn-info border border-3 border-success col-sm">Edit</button></a> | <a href="/blurb/${blurb.id}/delete"><button class="btn btn-danger border border-3 border-warning col-sm">Delete</button></a>
+    		mail<a href="/blurb/${blurb.id}/edit"><button class="btn btn-info border border-3 border-success col-sm">Edit</button></a> | <a href="/blurb/${blurb.id}/delete"><button class="btn btn-danger border border-3 border-warning col-sm">Delete</button></a>
     		</c:if>
     	</div>
     </div>
